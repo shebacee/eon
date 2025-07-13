@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="" method="get">
+    <table width="250" border="1" align="center" style="margin-top: 10%">
+  <tr>
+    <th width="18" scope="col">SI</th>
+    <th width="134" scope="col">Category_name</th>
+  <th width="134" scope="col">Description</th>
+
+
+      <th width="76" scope="col">&nbsp;</th></tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.categoryname }}</td>
+      <td>&nbsp;{{ i.discription }}</td>
+
+
+    <td><a href="/seller_edit_cat/{{ i.id }}">Edit</a></td>
+      <td><a href="/delete_cat/{{ i.id }}">Delete</a></td>
+
+  </tr>
+
+    {% endfor %}
+</table>
+</form>
+</body>
+</html>

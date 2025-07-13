@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>The Palatin - Hotel &amp; Resort Template</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/index/img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="/static/index/style.css">
+
+    <style>
+        .classynav {
+    margin-right: 200px; /* Adjust as needed */
+}
+        .classynav {
+    display: flex;
+    align-items: center;
+    gap: 200px; /* Adjust for more space */
+}
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="cssload-container">
+            <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="palatin-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="palatinNav">
+
+                        <!-- Nav brand -->
+                        <img src="/static/index/img/bg-img/icon-removebg-preview.png" alt="" width="100" height="100">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <div class="classynav">
+                                <ul>
+                                    <li class="active"><a href="seller_index">Home</a></li>
+                                    <li><a href="#">My Book</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/bookadd#aa">Add Book</a></li>
+                                            <li><a href="/bkview_frontview#aa">View Book</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Order</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/seller_view_order#aa">recieved order</a></li>
+                                            <li><a href="/orderapproved#aa">Approved Order</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">More</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/seller_view#aa">View profile</a></li>
+                                            <li><a href="/seller_chpass#aa">Change Password</a></li>
+                                        </ul></li>
+                                </ul>
+                                <div class="menu-btn">
+    <a href="/logout" class="btn palatin-btn"
+       onclick="return confirmLogout()">Logout</a>
+</div>
+
+<script>
+function confirmLogout() {
+    if (confirm('Are you sure you want to log out?')) {
+        window.location.href = '/logout';
+    } else {
+        window.location.href = '/seller_index';
+    }
+    return false; // Prevent default link action
+}
+</script>
+                            </div>
+                            <!-- Nav End -->
+{#                        </div>#}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Hero Area Start ##### -->
+    <section class="hero-area">
+        <div class="hero-slides owl-carousel">
+
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide d-flex align-items-center justify-content-center">
+                <div class="slide-img bg-img" style="background-image: url(/static/index/img/bg-img/book3.png);"></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-9">
+                            <!-- Slide Content -->
+                            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                                <div class="line" data-animation="fadeInUp" data-delay="300ms"></div>
+                                <h2 data-animation="fadeInUp" data-delay="500ms">EON</h2>
+                                <p data-animation="fadeInUp" data-delay="700ms">Eon is an innovative ebook platform where readers can discover, purchase, and read ebooks . Our platform also enables customers to sell their used ebooks and access study materials, fostering a vibrant community of book lovers and learners. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-hero-slide d-flex align-items-center justify-content-center">
+                <!-- Slide Img -->
+                <div class="slide-img bg-img" style="background-image: url(/static/index/img/bg-img/book12.jpg);"></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-9">
+                            <!-- Slide Content -->
+                            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                                <div class="line" data-animation="fadeInUp" data-delay="300ms"></div>
+                                 <h2>Turn Pages into Profits</h2><br><br>
+                            <p>Transform your bookshelves into a goldmine! Buy and sell new and used books with ease, and start earning cash from your favorite reads!<br><br>-Start by uploading available books<br>-Wait for orders</p>
+                                <a href="/bookadd#aa" class="btn palatin-btn mt-50" data-animation="fadeInUp" data-delay="900ms">Add Book</a>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="about-us-area">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-12 col-lg-6">
+                    <div class="about-text text-center mb-100">
+                        <div class="section-heading text-center">
+                            <div class="line-"></div>
+                            <h2>Explore Our Digital Library</h2>
+                        </div>
+                        <p> Access a vast collection of online books, including academic and non-academic titles, and enjoy the flexibility to read or download them at your convenience. Additionally, our academic section offers comprehensive study materials, interactive quizzes, and chapter-wise question-and-answer sessions, allowing you to test your knowledge and track your progress.</p>
+                        <div class="about-key-text">
+                             <h6 align="left"><span class="fa fa-check"></span> Access anytime,anywhere</h6>
+                            <h6><span class="fa fa-check"></span> Discover books tailored to your interests and reading habits</h6>
+                            <h6><span class="fa fa-check"></span>Explore a wide range of genres, from academic resources to fiction</h6>
+                       </div>
+                        <a href="/reg_cust" class="btn palatin-btn mt-50">signup as customer</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="about-thumbnail homepage mb-100">
+                        <!-- First Img -->
+                        <div class="first-img wow fadeInUp" data-wow-delay="100ms">
+                            <img src="/static/index/img/bg-img/book4.jpg" alt="">
+                        </div>
+                        <!-- Second Img -->
+                        <div class="second-img wow fadeInUp" data-wow-delay="300ms">
+                            <img src="/static/index/img/bg-img/book10.jpg" alt="">
+                        </div>
+                        <!-- Third Img-->
+                        <div class="third-img wow fadeInUp" data-wow-delay="500ms">
+                            <img src="/static/index/img/bg-img/book5.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="contact-area d-flex flex-wrap align-items-center" id="aa" style="background: whitesmoke">
+            <div class="row  mx-auto">
+
+                <div class="col-10">
+                    {% block body %}
+
+                    {% endblock %}
+                </div>
+            </div>
+    </section>
+        <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-lg-12">
+                    <div class="footer-widget-area mt-50">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <a href="#" class="d-block mb-5"><img src="/static/index/img/bg-img/icon-removebg-preview.png" height="250" width="250" alt=""></a>
+                            </div>
+                            <div class="col-lg-8">
+                                <br><br>
+                                <p>Eon is an innovative ebook platform where readers can discover, purchase, and read ebooks . Our platform also enables customers to sell their used ebooks and access study materials, fostering a vibrant community of book lovers and learners. </p>  <p><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                            </a></p>
+                            </div>
+                        </div>
+
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery-2.2.4 js -->
+    <script src="/static/index/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="/static/index/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/static/index/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="/static/index/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="/static/index/js/active.js"></script>
+</body>
+
+</html>

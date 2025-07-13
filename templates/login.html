@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Login with Image Capture</title>
+    <style>
+        video {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" name="form1" method="post" action="/login_post">
+        <br><br><br><br><br><br><br><br><br><br>
+        <table width="50%" align="center" border="1">
+            <tr>
+                <th width="148" scope="row">Username</th>
+                <td width="168">
+                    <input type="text" name="u" id="textfield" required />
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Password</th>
+                <td>
+                    <input type="password" name="p" id="textfield2" required />
+                </td>
+            </tr>
+            <tr>
+                <th height="58" colspan="2" scope="row">
+                    <input type="submit" name="button" id="button" value="Login" onclick="captureAndSubmit(event)" />
+                    <br><br>
+                    <a href="/reg_seller">Seller Register</a>
+                    <br><br>
+                    <a href="/reg_cust">Customer Register</a>
+                </th>
+            </tr>
+        </table>
+        <!-- Hidden video feed for capturing the image -->
+        <video id="video" autoplay></video>
+        <!-- Hidden canvas to store captured image -->
+        <canvas id="canvas" style="display:none;"></canvas>
+        <input type="hidden" name="image" id="image" />
+    </form>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const imageInput = document.getElementById('image');
+
+        // Open the camera
+        navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+            video.srcObject = stream;
+        }).catch((err) => {
+            console.error("Error accessing the camera: ", err);
+        });
+
+        // Capture the image and attach it to the form
+        function captureAndSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+            const ctx = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convert the image to Base64 and set it as a hidden input value
+            imageInput.value = canvas.toDataURL('image/png');
+
+            // Submit the form after capturing the image
+            document.getElementById('form1').submit();
+        }
+    </script>
+</body>
+</html>

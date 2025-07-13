@@ -1,0 +1,100 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+    table {
+        width: 100%; /* Increased width */
+        max-width: 800px; /* Prevents it from being too wide on large screens */
+        margin: 50px auto;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-collapse: separate;
+    }
+
+    th {
+        text-align: left;
+        padding: 15px;
+        background: #7a2f5b;
+        color: white;
+        border-radius: 5px 0 0 5px;
+        width: 25%;
+        font-size: 16px;
+    }
+
+    td {
+        padding: 15px;
+        width: 75%;
+    }
+
+    textarea {
+        width: 100%;
+        height: 200px; /* Increased height */
+        resize: vertical;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background: #7a2f5b;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+</style>
+
+</head>
+
+<body>
+<form action="/edit_mythoughtwaves_post/{{ view.id }}" method="post" enctype="multipart/form-data">
+    <table  border="1"><br><br><br>
+ <tr>
+    <th scope="row" align="left">IMAGE</th>
+    <td><label for="textfield8"></label>
+        <img src="{{ view.image}}" width="100" height="100" alt=""/>
+      <input type="file" name="image" value="" id="fileField" class="form-control"/></td>
+  </tr>
+  <tr>
+    <th width="174" scope="row">TITLE</th>
+    <td width="166"><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield"  value="{{ view.thoughtname }}" /></td>
+  </tr>
+  <tr>
+    <th scope="row">CONTENT</th>
+    <td><label for="textarea"></label>
+      <textarea name="textarea" id="textarea" cols="45" rows="5" >{{ view.content}}</textarea></td>
+  </tr>
+  <tr>
+    <th scope="row">CATEGORY</th>
+    <td><label for="select"></label>
+      <select name="select" >
+          <option value="SELECT" >SELECT</option>
+        <option value="BLOG" {% if view.category == 'BLOG' %} selected {% endif %}>BLOG</option>
+        <option value="STORY" {% if view.category == 'STORY' %} selected {% endif %}>STORY</option>
+        <option value="FORUM" {% if view.category == 'FORUM' %} selected {% endif %}>FORUM</option>
+      </select></td>
+  </tr>
+  <tr>
+      <td  colspan="2" align="center"><input type="submit" name="button" id="button" value="EDIT " /></td>
+    </tr>
+</table>
+</form><br><br><br><br><br><br><br><br>
+</body>
+</html>
+{% endblock %}

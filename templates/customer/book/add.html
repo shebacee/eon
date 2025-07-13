@@ -1,0 +1,102 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>/* Table Styles */
+table {
+    background-color: grey; /* Solid white background for visibility */
+    border-collapse: collapse;
+    width: 80%; /* Adjust as needed */
+}
+
+th, td {
+    background-color: grey; /* Solid white cells */
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd; /* Borders for better visibility */
+    color: black; /* Ensure text is visible */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for alternating rows */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Optional highlight on hover */
+}
+</style>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/csbookadd_post" enctype="multipart/form-data" >
+    <br><br><center>
+    <table width="426" border="1">
+  <tr>
+    <th width="242" scope="row" align='left'>BOOK</th>
+    <td width="168"><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" required /></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">AUTHOR</th>
+    <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" required pattern="[A-Za-z\s]{1,}" /></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">GENRE</th>
+    <td width="181"><label for="select"></label>
+     <select name="select">
+         {% for i in data %}
+         <option value="{{ i.id }}">{{ i.categoryname }}</option>
+         {% endfor %}
+
+     </select> </td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">DESCRIPTION </th>
+    <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" required/></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">PRICE</th>
+    <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6" required pattern="\d+" /></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">DISCOUNT</th>
+    <td><label for="textfield7"></label>
+      <input type="text" name="textfield7" id="textfield7" pattern="\d+"/></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">IMAGE</th>
+    <td><label for="textfield8"></label>
+      <input type="file" name="fileField" id="fileField" required /></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">BOOK CONDITION</th>
+    <td><label for="textfield11"></label>
+      <input type="text" name="textfield11" id="textfield11" required pattern="[A-Za-z\s]{1,}"/></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">QUANTITY</th>
+    <td><label for="textfield13"></label>
+      <input type="text" name="textfield13" id="textfield13" required pattern="\d+"/></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">NO. OF PAGES</th>
+    <td><label for="textfield14"></label>
+      <input type="text" name="textfield14" id="textfield14" required pattern="\d+"/></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="ADD" /></th>
+    </tr>
+</table>
+<br><br><br></center>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>PURCHASE</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="/static/index/style.css">
+
+    <style>
+    .classynav {
+    padding-left: 200px !important; /* Adjust the value as needed */
+}
+        .search-container {
+            display: flex;
+            align-items: center;
+            width: 300px;
+            margin: 20px;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-container button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            padding: 8px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-container button i {
+            font-size: 18px;
+        }
+
+        .search-container button:hover {
+            background-color: #555;
+        }
+</style>
+
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="cssload-container">
+            <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="palatin-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="palatinNav">
+
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><img src="/static/index/img/bg-img/icon-removebg-preview.png" width="150" height="150" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav" margin="left">
+
+                                <a href="/cust_index" class="btn palatin-btn" ><b>Home</b></a>
+                                </div>
+
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url(/static/index/img/bg-img/book3.png);">
+        <div class="bradcumbContent">
+            <h2>LIBRARY</h2>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Book Now Area Start ##### -->
+    <div class="book-now-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <div class="book-now-form">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <form id="form1" name="form1" method="post" action="/cs_onlinebkview_frontview_post">
+{#<table>#}
+{#      <tr>#}
+{#      <td>VIEW BOOK'S name BY:</td>#}
+{#      <td><input name="ttt"></td>#}
+{#        <td><input type="submit" name="button" id="button" value="search by name" ></td>#}
+{#    </tr>#}
+{#  </table>#}
+    <!-- ##### Book Now Area End ##### -->
+
+    <!-- ##### Rooms Area Start ##### -->
+    <section class="rooms-area section-padding-0-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6">
+                    <div class="section-heading text-center">
+                        <div class="line-"></div>
+                        <h2> Added Thoughtwave</h2>
+{#                        <p> Access a vast collection of online books and enjoy the flexibility to read or download them at your convenience.</p>#}
+                    </div>
+                </div>
+            </div>
+{#           <table align="left">#}
+{#      <tr>#}
+{#    <div class="search-container">#}
+{#        <input type="text" placeholder="Search for book" name="ttt">#}
+{#        <button>#}
+{#            <i>&#x1F50D;</i> <!-- Unicode for search icon -->#}
+{#        </button>#}
+{#    </div>#}
+{#      <td><input  placeholder="search for book" name="ttt"></td>#}
+{#        <td><input type="submit" name="button" id="button" value="search" ></td>#}
+{#    </tr>#}
+{#  </table>#}
+            <pre>
+
+
+        </pre>
+            <div class="row">
+
+                <!-- Single Rooms Area -->
+
+                {% for i in data %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-rooms-area wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Thumbnail -->
+                        <div class="bg-thumbnail bg-img" style="background-image: url({{ i.image }})"></div>
+                        <!-- Price -->
+
+                        <!-- Rooms Text -->
+                        <div class="rooms-text">
+                            <div class="line"></div>
+                            <h4>{{ i.thoughtname }}</h4>
+                            <p>{{ i.CUSTOMER.firstname }}<br>{{ i.category }}<br>{{ i.publish_date }}</p>
+                        </div>
+                        <!-- Book Room -->
+                        <a href="/view_mythoughtwaves/{{ i.id }}#cc" class="book-room-btn btn palatin-btn">View more details</a>
+                    </div>
+                </div>
+                {% endfor %}
+{#                <div class="col-12">#}
+{#                    <!-- Pagination -->#}
+{#                    <div class="pagination-area wow fadeInUp" data-wow-delay="400ms">#}
+{#                        <nav>#}
+{#                            <ul class="pagination">#}
+{#                                <li class="page-item active"><a class="page-link" href="#">01.</a></li>#}
+{#                                <li class="page-item"><a class="page-link" href="#">02.</a></li>#}
+{#                                <li class="page-item"><a class="page-link" href="#">03.</a></li>#}
+{#                            </ul>#}
+{#                        </nav>#}
+{#                    </div>#}
+{#                </div>#}
+
+            </div>
+        </div>
+    </section>
+    </form>
+<section class="contact-area d-flex flex-wrap align-items-center" id="cc" style="background: whitesmoke">
+{#        <img src="/static/index/img/bg-img/book4.jpg" height="10%" width="50%">#}
+
+            <div class="row  mx-auto">
+
+                <div class="col-10">
+                    {% block body %}
+
+                    {% endblock %}
+                </div>
+            </div>
+    </section>
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-lg-12">
+                    <div class="footer-widget-area mt-50">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <a href="#" class="d-block mb-5"><img src="/static/index/img/bg-img/icon-removebg-preview.png" height="250" width="250" alt=""></a>
+                            </div>
+                            <div class="col-lg-8">
+                                <br><br>
+                                <p>Eon is an innovative ebook platform where readers can discover, purchase, and read ebooks . Our platform also enables customers to sell their used ebooks and access study materials, fostering a vibrant community of book lovers and learners. </p>  <p><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                            </a></p>
+                            </div>
+                        </div>
+
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery-2.2.4 js -->
+    <script src="/static/index/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="/static/index/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/static/index/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="/static/index/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="/static/index/js/active.js"></script>
+</body>
+</html>
+
+
+

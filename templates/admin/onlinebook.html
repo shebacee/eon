@@ -1,0 +1,156 @@
+{% extends "admin/index.html" %}
+{% block body %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Book Upload</title>
+    <style>/* Table Styles */
+table {
+    background-color: grey; /* Solid white background for visibility */
+    border-collapse: collapse;
+    width: 80%; /* Adjust as needed */
+}
+
+th, td {
+    background-color: grey; /* Solid white cells */
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd; /* Borders for better visibility */
+    color: black; /* Ensure text is visible */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for alternating rows */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Optional highlight on hover */
+}
+</style>
+
+    <script type="text/javascript">
+        function adds(eid) {
+            document.getElementById("t1").style.display = eid === "academic" ? "" : "none";
+            document.getElementById("t2").style.display = eid === "non-academic" ? "" : "none";
+            document.getElementById("t3").style.display = eid === "non-academic" ? "" : "none";
+        }
+
+        function displayFileSize(inputId, displayElementId) {
+            const fileInput = document.getElementById(inputId);
+            const displayElement = document.getElementById(displayElementId);
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const fileSizeInKB = (file.size / 1024).toFixed(2); // Convert to KB
+                displayElement.value = `${fileSizeInKB} KB`;
+            }
+        }
+    </script>
+</head>
+<body><br>
+    <form id="form1" align="center" name="form1" method="post" action="/onlinebookadd_post" enctype="multipart/form-data">
+        <table width="426" border="1" class="table table-bordered">
+            <tr>
+                <th width="242" scope="row" align="left">BOOK</th>
+                <td width="168">
+                    <input type="text" name="textfield" id="textfield" class="form-control" required/>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" align="left">AUTHOR</th>
+                <td>
+                    <input type="text" name="textfield2" id="textfield2" class="form-control" required pattern="[A-Za-z\s]{1,}"/>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" align="left">TYPE</th>
+                <td width="181">
+                    <select name="select1" id="select1" onchange="adds(this.value)">
+                        <option value="select">SELECT</option>
+                        <option value="academic">ACADEMIC</option>
+                        <option value="non-academic">NON-ACADEMIC</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="t2" style="display: none">
+                <th scope="row" align="left">GENRE</th>
+                <td width="181">
+                    <select name="select">
+                        <option value="select">select</option>
+                        {% for i in data %}
+                            <option value="{{ i.id }}">{{ i.categoryname }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr id="t1" style="display: none">
+                <th scope="row" align="left">SUBJECT</th>
+                <td width="181">
+                    <select name="select2">
+                        <option>MATHEMATICS</option>
+                        <option>CHEMISTRY</option>
+                        <option>PHYSICS</option>
+                        <option>HISTORY</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" align="left">DESCRIPTION</th>
+                <td>
+                    <input type="text" name="textfield5" id="textfield5" class="form-control"  required />
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" align="left">IMAGE</th>
+                <td>
+                    <input type="file" name="image" id="image" class="form-control" required/>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" align="left">CONTENT</th>
+                <td>
+                    <input type="file" name="textfield19" id="textfield19" class="form-control"
+                           onchange="displayFileSize('textfield19', 'textfield16')" required/>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" align="left">FILE SIZE</th>
+                <td>
+                    <input type="text" name="textfield16" id="textfield16" class="form-control" readonly/>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" align="left">LANGUAGE</th>
+                <td>
+                    <input type="text" name="textfield15" id="textfield15" class="form-control" required pattern="[A-Za-z\s]{1,}" />
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" align="left">NO. OF PAGES</th>
+                <td>
+                    <input type="text" name="textfield14" id="textfield14" class="form-control" required pattern="\d+"/>
+                </td>
+            </tr>
+{#            <tr id="t3" style="display: none">#}
+{#                <th scope="row" align="left">EMOTION</th>#}
+{#                <td width="181">#}
+{#                    <select name="select3">#}
+{#                        <option>Happy</option>#}
+{#                        <option>Sad</option>#}
+{#                        <option>Angry</option>#}
+{#                        <option>Fearful</option>#}
+{#                    </select>#}
+{#                </td>#}
+{#            </tr>#}
+            <tr>
+                <th colspan="2" scope="row">
+                    <input type="submit" name="button" id="button" value="ADD" />
+                </th>
+            </tr>
+        </table>
+    <br><br>
+    </form>
+</body>
+</html>
+{% endblock %}

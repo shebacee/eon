@@ -1,0 +1,163 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+    /* Center the table inside a container */
+    .table-container {
+        width: 90%;
+        max-width: 700px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #f9f9f9;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    /* Table Header */
+    th {
+        background-color: #444; /* Dark Grey */
+        color: white;
+        padding: 14px;
+        font-size: 16px;
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    /* Table Data Cells */
+    td {
+        padding: 12px;
+        font-size: 16px;
+        border-bottom: 1px solid #ddd;
+        color: #333;
+    }
+
+    /* Input Fields */
+    input[type="text"],
+    input[type="date"],
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: border 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="file"]:focus {
+        border: 1px solid #444;
+    }
+
+    /* Update Button */
+    input[type="submit"] {
+        width: 100%;
+        background-color: #444;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #222;
+    }
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/edit_csprofile_post/{{ id }}"  enctype="multipart/form-data">
+
+
+<div class="table-container">
+    <table>
+        <tr>
+            <th scope="row">IMAGE</th>
+            <td>
+                <input type="file" name="fileField" id="fileField" />
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">FIRST NAME</th>
+            <td>
+                <input type="text" name="textfield" id="textfield" value="{{data.firstname}}"/>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">LAST NAME</th>
+            <td>
+                <input type="text" name="textfield9" id="textfield9" value="{{ data.lastname }}" />
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">EMAIL</th>
+            <td>
+                <input type="text" name="textfield2" id="textfield2" value="{{ data.email }}" readonly />
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">PHONE NUMBER</th>
+            <td>
+                <input type="text" name="textfield3" id="textfield3" value="{{ data.phonenumber }}" pattern="\d{10}"/>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">DATE OF BIRTH</th>
+            <td>
+                <input type="date" name="textfield4" id="textfield4" value="{{ data.dob }}" />
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">AGE</th>
+            <td>
+                <input type="text" name="textfield6" id="textfield6" value="{{ data.age }}"/>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">PLACE</th>
+            <td>
+                <input type="text" name="textfield7" id="textfield7" value="{{ data.place }}" />
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">POST</th>
+            <td>
+                <input type="text" name="textfield10" id="textfield10" value="{{ data.post }}" />
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">PINCODE</th>
+            <td>
+                <input type="text" name="textfield11" id="textfield11" value="{{ data.pin }}" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="button" id="button" value="UPDATE" />
+            </td>
+        </tr>
+    </table>
+</div>
+</form>
+</body>
+</html>
+{% endblock %}

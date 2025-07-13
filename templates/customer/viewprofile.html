@@ -1,0 +1,143 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>/* Center the table and make it wider */
+/* Profile Image Styling (Circular) */
+.custom-table img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%; /* Makes it a circle */
+    margin: 10px auto;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+        <style>
+        /* Table Container */
+        .table-container {
+            width: 90%;
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 15px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Stylish Grey Header */
+        th {
+            background-color: #444; /* Dark Grey */
+            color: white !important; /* Ensuring white text */
+            padding: 12px;
+            font-size: 16px;
+            text-transform: uppercase;
+
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        td {
+    width: 90%; /* Adjust as needed */
+    max-width: 600px; /* Prevents it from getting too wide */
+    text-align: left; /* Align text for better readability */
+}
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Grey Button for Unblock */
+        .btn-edit {
+            background-color: #666; /* Medium Grey */
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            text-align: center;
+
+        }
+
+        .btn-uedit:hover {
+            background-color: #444; /* Darker Grey */
+        }
+
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<table class="custom-table">
+
+      <tr>
+
+          <td colspan="2"><img src="{{ data.image }}" width="200" height="200" alt=""/></td>
+      </tr>
+    <tr>
+      <th width="163" scope="row">FIRST NAME</th>
+      <td width="99">{{ data.firstname }}</td>
+    </tr>
+      <tr>
+      <th width="163" scope="row">LAST NAME</th>
+      <td width="99">{{ data.lastname }}</td>
+    </tr>
+    <tr>
+      <th scope="row">EMAIL</th>
+      <td>&nbsp;{{ data.email }}</td>
+    </tr>
+      <tr>
+      <th scope="row">DATE OF BIRTH</th>
+      <td>&nbsp;{{ data.dob }}</td>
+    </tr>
+    <tr>
+      <th scope="row">PHONE NUMBER</th>
+      <td>{{ data.phonenumber }}&nbsp;</td>
+    </tr>
+    <tr>
+      <th scope="row">PLACE</th>
+      <td>&nbsp;{{ data.place }}</td>
+    </tr>
+    <tr>
+      <th scope="row">POST</th>
+      <td>{{ data.post }}&nbsp;</td>
+    </tr>
+    <tr>
+      <th scope="row">PINCODE</th>
+      <td>&nbsp;{{ data.pin }}</td>
+    </tr>
+    <tr>
+    <td colspan="2" style="text-align: center;">
+        <a href="/edit_csprofile/{{ data.id }}#aa" class="btn-edit">Edit</a>
+    </td>
+</tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

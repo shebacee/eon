@@ -1,0 +1,101 @@
+{% extends "seller/bookview.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+  /* Make hyperlinks white */
+  a {
+    color: grey;
+    text-decoration: none; /* Optional: remove underline */
+  }
+
+  /* Add hover effect for better visibility */
+  a:hover {
+    color: #ccc; /* Light gray on hover */
+    text-decoration: underline; /* Optional: underline on hover */
+  }
+</style>
+</head>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="" >
+<center>
+  <table width="505" border="3" align="center" class="table table-hover">
+  {% for i in data %}
+    <tr>
+      <td colspan="2" align="center"><img src="{{ i.image }}" width="200" height="200" alt=""/></td>
+    </tr>
+    <tr>
+      <th scope="row">BOOK</th>
+      <td>{{ i.book_name }}</td>
+    </tr>
+    <tr>
+      <th scope="row">AUTHOR</th>
+      <td>{{ i.author }}</td>
+    </tr>
+    <tr>
+      <th scope="row">GENRE</th>
+      <td>{{ i.GENRE.categoryname }}</td>
+    </tr>
+{#    <tr>#}
+{#      <th scope="row">TYPE</th>#}
+{#      <td>{{ i.type }}</td>#}
+{#    </tr>#}
+    <tr>
+      <th scope="row">DESCRIPTION</th>
+      <td>{{ i.description }}</td>
+    </tr>
+    <tr>
+      <th scope="row">NO. OF PAGES</th>
+      <td>{{ i.numberofpages }}</td>
+    </tr>
+    <tr>
+      <th scope="row">VIEW REVIEW</th>
+        <td><a href="/review_book/{{ i.id }}#aa" class="btn btn-outline-dark">view reviews n rating</a></td>    </tr>
+      <tr>
+          <th scope="row">EDIT</th>
+          <td><a href="/bookedit/{{ i.id }}#aa">edit</a></td>
+      </tr>
+      <tr>
+          <th scope="row">DELETE</th>
+          <td><a href="/bkdelete/{{ i.id }}" onclick="return confirm('Are You Certain ?')" class="btn btn-outline-danger" >delete</a></td>
+      </tr>
+
+    {% endfor %}
+  </table>
+</center>
+</form>
+
+
+</body>
+</html>
+{% endblock %}
+
+
+{#      <td >&nbsp;{{ i.availability }}</td>#}
+{#      <td >{{ i.numberofpages }}</td>#}
+{##}
+{##}
+{##}
+{##}
+{#      <td><a href="/bookedit/{{ i.id }}">edit</a></td>#}
+{##}
+{##}
+{#      <td><a href="/bkdelete/{{ i.id }}">delete</a></td>#}
+{#         <td><a href="/review_book/{{ i.id }}">view reviews n rating</a></td>#}
+{#      <td><a href="/review_book/{{ i.id }}">view reviews</a></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}

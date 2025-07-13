@@ -1,0 +1,137 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Webcam Capture</title>
+<link rel="stylesheet" href="/static/mystyle.css">
+
+{#<script>#}
+{#// Access webcam and capture an image every 10 seconds#}
+{#document.addEventListener("DOMContentLoaded", function () {#}
+{#    const video = document.createElement("video");#}
+{#    const canvas = document.createElement("canvas");#}
+{#    const context = canvas.getContext("2d");#}
+{##}
+{#    // Start the webcam stream#}
+{#    navigator.mediaDevices.getUserMedia({ video: true })#}
+{#        .then(stream => {#}
+{#            video.srcObject = stream;#}
+{#            video.play();#}
+{##}
+{#            // Capture image every 10 seconds#}
+{#            setInterval(() => captureImage(video, canvas, context), 10000); // Capture every 10 seconds#}
+{#        })#}
+{#        .catch(error => {#}
+{#            console.error("Error accessing webcam:", error);#}
+{#        });#}
+{#});#}
+{##}
+{#// Capture image from the webcam#}
+{#function captureImage(video, canvas, context) {#}
+{#    // Set canvas size to match the video#}
+{#    canvas.width = video.videoWidth;#}
+{#    canvas.height = video.videoHeight;#}
+{##}
+{#    // Draw the current frame from video to the canvas#}
+{#    context.drawImage(video, 0, 0, canvas.width, canvas.height);#}
+{##}
+{#    // Convert canvas to blob and send it to the server#}
+{#    canvas.toBlob(blob => {#}
+{#        const formData = new FormData();#}
+{#        formData.append("image", blob, "webcam_capture.png");#}
+{##}
+{#        // Send the captured image to the server#}
+{#        fetch("/save_image", {#}
+{#            method: "POST",#}
+{#            body: formData,#}
+{#            headers: {#}
+{#                "X-CSRFToken": getCookie("csrftoken") // Include CSRF token#}
+{#            }#}
+{#        })#}
+{#        .then(response => response.json())#}
+{#        .then(data => console.log(data))#}
+{#        .catch(error => console.error("Error:", error));#}
+{#    });#}
+{#}#}
+{##}
+{#// Helper function to get CSRF token from cookies#}
+{#function getCookie(name) {#}
+{#    let cookieValue = null;#}
+{#    if (document.cookie && document.cookie !== "") {#}
+{#        const cookies = document.cookie.split(";");#}
+{#        for (let i = 0; i < cookies.length; i++) {#}
+{#            const cookie = cookies[i].trim();#}
+{#            if (cookie.startsWith(name + "=")) {#}
+{#                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));#}
+{#                break;#}
+{#            }#}
+{#        }#}
+{#    }#}
+{#    return cookieValue;#}
+{#}#}
+{#</script>#}
+
+</head>
+<body id="body1">
+      <table width="90%" height="500" border="1" align="center">
+    <tr>
+      <th scope="row"><a href="/cust_view">VIEW PROFILE</a></th>
+    </tr>
+      <tr>
+      <th scope="row"><a href="/cust_chpass">CHANGE PASSWORD</a></th>
+    </tr>
+      <tr>
+          <th scope="row"><a href="/cs_onlinebkview">VIEW ONLINE BOOK</a></th>
+    </tr>
+      <tr>
+      <th scope="row"><a href="/view_own_onlinebk_review">VIEW OWN ONLINE BOOK REVIEW</a></th>
+    </tr>
+    <tr>
+      <th scope="row"><a href="/csbookadd">ADD BOOK</a></th>
+    </tr>
+    <tr>
+      <th scope="row"><a href="/csbkview">VIEW MY BOOK</a></th>
+    </tr>
+          <tr>
+      <th scope="row"><a href="/view_other_book">VIEW OTHER BOOKS</a></th>
+    </tr>
+          <tr>
+      <th scope="row"><a href="/view_own_review">VIEW OWN REVIEW</a></th>
+    </tr>
+      <tr>
+      <th scope="row"><a href="/view_cart">VIEW CART</a></th>
+    </tr>
+      <tr>
+      <th scope="row"><a href="/cs_order_view">SELLER-C ORDER MANAGEMENT</a></th>
+    </tr>
+      <tr>
+      <th scope="row"><a href="/csorderapproved">VIEW APPROVED ORDER</a></th>
+    </tr>
+    <tr>
+      <th scope="row"><a href="/view_my_order">VIEW  MY ORDER</a></th>
+    </tr>
+    <tr>
+      <th scope="row"><a href="/cs_academicbk_view">VIEW STUDY MATERIAL</a></th>
+    </tr>
+       <tr>
+      <th scope="row"><a href="/add_mythoughtwaves">ADD MY THOUGHT WAVES</a></th>
+    </tr>
+    <tr>
+      <th scope="row"><a href="/view_mythoughtwaves">VIEW MY THOUGHT WAVES</a></th>
+    </tr>
+      <tr>
+      <th scope="row"><a href="/all_thoughtwaves">VIEW ALL THOUGHT WAVES</a></th>
+    </tr>
+       <tr>
+      <td align="center"><a href="/chatbott">CHATBOT</a></td>
+    </tr>
+       <tr>
+      <td align="center"><a href="/emot_rec">EMOTION BASED RECOMMENDATION</a></td>
+    </tr>
+      <tr>
+      <td align="center"><a href="/logout">LOGOUT</a></td>
+    </tr>
+  </table>
+    <video id="videoElement" autoplay></video>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{% extends "customer/onlinebook_interface.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+  /* Make hyperlinks white */
+  a {
+    color: grey;
+    text-decoration: none; /* Optional: remove underline */
+  }
+
+  /* Add hover effect for better visibility */
+  a:hover {
+    color: #ccc; /* Light gray on hover */
+    text-decoration: underline; /* Optional: underline on hover */
+  }
+</style>
+</head>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="" class="table table-hover">
+<center>
+  <table width="505"  align="center" >
+  {% for i in data %}
+    <tr>
+      <th width="175" scope="row">SI</th>
+      <td width="314">{{ forloop.counter }}</td>
+    </tr>
+    <tr>
+      <th scope="row">BOOK</th>
+      <td>{{ i.book_name }}</td>
+    </tr>
+    <tr>
+      <th scope="row">AUTHOR</th>
+      <td>{{ i.author }}</td>
+    </tr>
+    <tr>
+      <th scope="row">GENRE</th>
+      <td>{{ i.GENRE.categoryname }}</td>
+    </tr>
+    <tr>
+      <th scope="row">TYPE</th>
+      <td>{{ i.type }}</td>
+    </tr>
+    <tr>
+      <th scope="row">DESCRIPTION</th>
+      <td>{{ i.description }}</td>
+    </tr>
+    <tr>
+      <th scope="row">IMAGE</th>
+      <td><img src="{{ i.image }}" width="100" height="100" alt=""/></td>
+    </tr>
+    <tr>
+      <th scope="row">FILE SIZE</th>
+      <td>{{ i.filesize }}</td>
+    </tr>
+    <tr>
+      <th scope="row">LANGUAGE</th>
+      <td>{{ i.language }}</td>
+    </tr>
+    <tr>
+      <th scope="row">NO. OF PAGES</th>
+      <td>{{ i.no_ofpage }}</td>
+    </tr>
+    <tr>
+      <th scope="row">READ</th>
+{#      <td><a href="/turn_pages/{{ i.id }}">Read</a></td>#}
+          <td><a href="{{ i.content }}">Read</a></td>
+
+    </tr>
+    <tr>
+      <th scope="row">REVIEW</th>
+      <td><a href="/add_onlinebk_review/{{ i.id }}#aa">Add reviews</a></td>
+    </tr>
+    <tr>
+      <th scope="row">VIEW REVIEW</th>
+      <td><a href="/view_all_onlinebk_review/{{ i.id }}#aa">view reviews n rating</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</center>
+</form>
+
+  
+</body>
+</html>
+{% endblock %}

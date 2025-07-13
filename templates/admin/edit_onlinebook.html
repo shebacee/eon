@@ -1,0 +1,272 @@
+{% extends "admin/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <style>
+        table {
+            width: 50%;
+            margin: auto;
+            border-collapse: collapse;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #ddd;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background: #5c3d2e;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #3e2820;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="/onlinebookedit_post/{{ data.id }}" enctype="multipart/form-data">
+        <table width="90%"><br><Br><br>
+            <tr>
+                <th>BOOK</th>
+                <td><input type="text" value="{{ data.book_name }}" name="textfield" readonly /></td>
+            </tr>
+            <tr>
+                <th>AUTHOR</th>
+                <td><input type="text" name="textfield2" value="{{ data.author }}" readonly /></td>
+            </tr>
+            <tr>
+                <th>TYPE</th>
+                <td>
+                    <select name="select1" id="select1">
+                        <option value="academic"{% if data.type == 'academic' %} selected {% endif %}>ACADEMIC</option>
+                        <option value="non-academic"{% if data.type == 'non-academic' %} selected {% endif %}>NON-ACADEMIC</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="t2">
+                <th>GENRE</th>
+                <td>
+                    <select name="select">
+                        <option value="select">select</option>
+                        {% for i in data1 %}
+                            <option value="{{ i.id }}" {% if data.GENRE.categoryname == i.categoryname %} selected {% endif %}>{{ i.categoryname }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr id="t1">
+                <th>SUBJECT</th>
+                <td>
+                    <select name="select2">
+                        <option value="MATHEMATICS" {% if data.subject == 'MATHEMATICS' %} selected{% endif %}>MATHEMATICS</option>
+                        <option value="CHEMISTRY" {% if data.subject == 'CHEMISTRY' %} selected{% endif %}>CHEMISTRY</option>
+                        <option value="PHYSICS" {% if data.subject == 'PHYSICS' %} selected{% endif %}>PHYSICS</option>
+                        <option value="HISTORY" {% if data.subject == 'HISTORY' %} selected{% endif %}>HISTORY</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>DESCRIPTION</th>
+                <td><input type="text" name="textfield5" value="{{ data.description }}  required" /></td>
+            </tr>
+            <tr>
+                <th>IMAGE</th>
+                <td>
+                    <img src="{{ data.image }}" width="80" height="80" alt="Book Image"/>
+                    <input type="file" name="image" />
+                </td>
+            </tr>
+            <tr>
+                <th>FILE SIZE</th>
+                <td><input type="text" name="textfield16" value="{{ data.filesize }}" /></td>
+            </tr>
+            <tr>
+                <th>LANGUAGE</th>
+                <td><input type="text" name="textfield15" value="{{ data.language }}" /></td>
+            </tr>
+            <tr>
+                <th>NO. OF PAGES</th>
+                <td><input type="text" name="textfield14" value="{{ data.no_ofpage }}" required pattern="[0-9]{*}"/></td>
+            </tr>
+            <tr>
+                <th colspan="2"><input type="submit" value="EDIT" /></th>
+            </tr>
+        </table>
+    </form>
+<br><Br><br>
+    <script src="/static/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#t1").hide();
+            $("#t2").hide();
+
+            $("#select1").change(function(){
+                const val = $("#select1").val();
+                if(val === "select"){
+                    alert('Please select a valid type.');
+                } else if(val === "academic"){
+                    $("#t1").show();
+                    $("#t2").hide();
+                } else {
+                    $("#t1").hide();
+                    $("#t2").show();
+                }
+            });
+
+            document.getElementById("fileField").addEventListener("change", function () {
+                const file = this.files[0];
+                if (file) {
+                    const fileSizeInKB = (file.size / 1024).toFixed(2);
+                    document.getElementById("textfield16").value = fileSizeInKB + " KB";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}
+
+
+{#{% extends "admin/index.html" %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post"  align="center" class="table table-bordered" action="/onlinebookedit_post/{{ data.id }}" enctype="multipart/form-data">#}
+{#    <br><br><br><table width="426" border="1" class="table table-bordered">#}
+{#  <tr>#}
+{#    <th width="242" scope="row" align='left'>BOOK</th>#}
+{#    <td width="168"><label for="textfield"></label>#}
+{#      <input type="text" value="{{ data.book_name }}" name="textfield" id="textfield" readonly /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row" align="left">AUTHOR</th>#}
+{#    <td><label for="textfield2"></label>#}
+{#      <input type="text" name="textfield2" value="{{ data.author }}" id="textfield2" readonly /></td>#}
+{#  </tr>#}
+{#<tr>#}
+{#    <th scope="row" align="left">TYPE</th>#}
+{#    <td width="181">#}
+{#     <select name="select1" id="select1">#}
+{#         <option value="SELECT" {% if data.type == 'SELECT' %} selected{% endif %}>SELECT</option>#}
+{#         <option value="academic"{% if data.type == 'academic' %} selected {% endif %}>ACADEMIC</option>#}
+{#         <option value="non-academic" {% if data.type == 'non-academic' %} selected {% endif %}>NON-ACADEMIC</option>#}
+{#     </select> </td>#}
+{#  </tr>#}
+{##}
+{#  <tr id="t2">#}
+{#    <th scope="row" align="left">GENRE</th>#}
+{#    <td width="181"><label for="select"></label>#}
+{#     <select name="select">#}
+{#         <option value="select">select</option>#}
+{#         {% for i in data1 %}#}
+{#         <option value="{{ i.id }}" {% if data.GENRE.categoryname == i.categoryname %} selected {% endif %}>{{ i.categoryname }}</option>#}
+{#         {% endfor %}#}
+{##}
+{#     </select> </td>#}
+{#  </tr>#}
+{#<tr id="t1">#}
+{#    <th scope="row" align="left">SUBJECT</th>#}
+{#    <td width="181"><label for="select"></label>#}
+{#     <select name="select2">#}
+{#         <option value="MATHEMATICS" {% if data.subject == 'MATHEMATICS' %} selected{% endif %}>MATHEMATICS</option>#}
+{#         <option value="CHEMISTRY" {% if data.subject == 'CHEMISTRY' %}selected{% endif %}>CHEMISTRY</option>#}
+{#         <option value="PHYSICS" {% if data.subject == 'PHYSICS'%} selected{% endif %}>PHYSICS</option>#}
+{#         <option value="HISTORY" {% if data.subject == 'HISTORY' %}selected{% endif %}>HISTORY</option>#}
+{#     </select> </td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row" align="left">DESCRIPTION </th>#}
+{#    <td><label for="textfield5"></label>#}
+{#      <input type="text" name="textfield5" value="{{ data.description }}" id="textfield5" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row" align="left">IMAGE</th>#}
+{#    <td><label for="textfield8"></label>#}
+{#        <img src="{{ data.image}}" width="100" height="100" alt=""/>#}
+{#      <input type="file" name="image" id="image" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row" align="left">FILE SIZE</th>#}
+{#    <td><label for="textfield14"></label>#}
+{#      <input type="text" name="textfield16" value="{{ data.filesize }}" id="textfield16" /></td>#}
+{#  </tr>#}
+{#<tr>#}
+{#    <th scope="row" align="left">LANGUAGE</th>#}
+{#    <td><label for="textfield14"></label>#}
+{#      <input type="text" name="textfield15" id="textfield15" value="{{ data.language }}"/></td>#}
+{#  </tr>#}
+{#<tr>#}
+{#    <th scope="row" align="left">NO. OF PAGES</th>#}
+{#    <td><label for="textfield14"></label>#}
+{#      <input type="text" name="textfield14" value="{{ data.no_ofpage }}" id="textfield14" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="EDIT" /></th>#}
+{#    </tr>#}
+{#</table>#}
+{#    <script src="/static/jquery.min.js"></script>#}
+{#<script>#}
+{#$(document).ready(function(){#}
+{#    // Hide GENRE and SUBJECT sections initially#}
+{#    $("#t1").hide();#}
+{#    $("#t2").hide();#}
+{##}
+{#    // Show/Hide logic based on TYPE selection#}
+{#    $("#select1").change(function(){#}
+{#        const val = $("#select1").val();#}
+{#        if(val === "select"){#}
+{#            alert('Please select a valid type.');#}
+{#        } else if(val === "academic"){#}
+{#            $("#t1").show();#}
+{#            $("#t2").hide();#}
+{#        } else {#}
+{#            $("#t1").hide();#}
+{#            $("#t2").show();#}
+{#        }#}
+{#    });#}
+{##}
+{#    // File size calculation and display#}
+{#    document.getElementById("fileField").addEventListener("change", function () {#}
+{#        const file = this.files[0];#}
+{#        if (file) {#}
+{#            const fileSizeInKB = (file.size / 1024).toFixed(2); // Convert to KB#}
+{#            document.getElementById("textfield16").value = fileSizeInKB + " KB";#}
+{#        }#}
+{#    });#}
+{#});#}
+{#</script>#}
+{#</form><br><br><br>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}

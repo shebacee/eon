@@ -1,0 +1,158 @@
+ {
+    "ourIntents": [
+
+             {"tag": "developers",
+              "patterns": ["development team?", "details of developers","who made you??","who is your creator"],
+              "responses": ["Aaliya, Devika, Sheba", "Developers are Aaliya, Devika, Sheba"]
+             },
+             {"tag": "name",
+              "patterns": ["what's your name?","do you go by a name??"],
+              "responses": ["I have no name yet, You can give me one, and I will appreciate it"]
+             },
+             {  "tag": "exit",
+                "patterns": ["quit", "exit","bye","see you later","catch you later"],
+                "responses": ["Okay, Good bye!!", "Bye, Have a nice day "]
+            },
+            {
+               "tag": "greeting",
+               "patterns": [
+                   "Hi there",
+                   "How are you",
+                   "Is anyone there?",
+                   "Hey",
+                   "Hola",
+                   "Hello",
+                   "Good day",
+                   "Namaste",
+                   "yo"
+               ],
+               "responses": [
+                   "Hello",
+                   "Good to see you again",
+                   "Hi there, how can I help?"
+               ],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "goodbye",
+               "patterns": [
+                   "Bye",
+                   "See you later",
+                   "Goodbye",
+                   "Get lost",
+                   "Till next time",
+                   "bbye"
+               ],
+               "responses": [
+                   "See you!",
+                   "Have a nice day",
+                   "Bye! Come back again soon."
+               ],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "thanks",
+               "patterns": [
+                   "Thanks",
+                   "Thank you",
+                   "That's helpful",
+                   "Awesome, thanks",
+                   "Thanks for helping me"
+               ],
+               "responses": [
+                   "Happy to help!",
+                   "Any time!",
+                   "My pleasure"
+               ],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "about the app",
+               "patterns": ["What is EON ?", "Describe yourself", "Introduce yourself"],
+               "responses": [
+                   "EON is an online platform for reading, buying, and selling books. It connects book lovers with a wide variety of books and allows users to sell their pre-owned books easily."
+               ],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "about us",
+               "patterns": [ "How does the eon work?", "Explain your working","how does the app work??"],
+               "responses": [
+                   "Create an account then you can browse through our collection, purchase books, read ebooks online, or sell your own books. Create an account to get started."],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "about book",
+               "patterns": ["How do I purchase a book?","how to buy a book?","want to buy a book"],
+               "responses": [
+                   "Browse through our categories or use the search bar to find a book. Add it to your cart or directly place your order, proceed to checkout, and complete the payment. Within a few days you will recieve your book ;)"],
+               "context": [
+                   ""
+               ]
+           },
+          {
+               "tag": "about order",
+               "patterns": [" refunds or returns?","is it possible to return the book i bought??"],
+               "responses": [
+                   "Refunds and returns are available for damaged or incorrect items. Please contact us within 3 working days of delivery to initiate the process."],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "offline reading",
+               "patterns": ["Can I download ebooks for offline reading?","is necessary to have internet connection to read book??","can i read read the book offline"],
+               "responses": [
+                   "Yes, downloaded ebooks can be accessed offline within your system"],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "about eon",
+               "patterns": [" Do I need an account to use the platform?","is account creation necessary"],
+               "responses": [
+                   " Yes, you need an account to buy, sell, or save books. However, you can browse the collection without an account."],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "account",
+               "patterns": ["How do I create an account?","creating account"],
+               "responses": [
+                   "Click on the 'REGISTER' button at the top of the page, fill in your details"],
+               "context": [
+                   ""
+               ]
+           },
+           {
+               "tag": "about selling",
+               "patterns": ["How can I sell my books on this platform?","how sell my book","wanna sell the book"],
+               "responses": [
+                   " List your book with all required details, and set a price. Once its added, it will be available for buyers."],
+               "context": [
+                   ""
+               ]
+           },
+      {
+               "tag": "about self",
+               "patterns": ["who are you?","what are you","whats your purpose?"],
+               "responses": [
+                   "I'm just a virtual assistant. what can i help you with?"],
+               "context": [
+                   ""
+               ]
+           }
+
+]}

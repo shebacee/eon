@@ -1,0 +1,166 @@
+{% extends "admin/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+
+    <style>
+        /* Table Styles */
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+        }
+
+        /* Updated Grey Header */
+        th {
+            background: #555;  /* Dark Grey */
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Button Styling */
+        .btn-block {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-block:hover {
+            background-color: #d63333;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>SI</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Phone Number</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.firstname }} {{ i.lastname }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.phonenumber }}</td>
+                <td>{{ i.dob }}</td>
+                <td>{{ i.gender }}</td>
+                <td>{{ i.place }}, {{ i.post }}, {{ i.pin }}</td>
+                <td>
+                    <a href="/blockuser/{{ i.LOGIN.id }}" class="btn-block">Block</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>
+
+{% endblock %}
+
+
+
+{#{% extends "admin/index.html" %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#    <style>/* Table Styles */#}
+{#table {#}
+{#    background-color: white; /* Solid white background for visibility */#}
+{#    border-collapse: collapse;#}
+{#    width: 80%; /* Adjust as needed */#}
+{#}#}
+{##}
+{#th, td {#}
+{#    background-color: white; /* Solid white cells */#}
+{#    padding: 8px;#}
+{#    text-align: center;#}
+{#    border: 1px solid #ddd; /* Borders for better visibility */#}
+{#    color: black; /* Ensure text is visible */#}
+{#}#}
+{##}
+{#tr:nth-child(even) {#}
+{#    background-color: #f9f9f9; /* Light gray for alternating rows */#}
+{#}#}
+{##}
+{#tr:hover {#}
+{#    background-color: #f1f1f1; /* Optional highlight on hover */#}
+{#}#}
+{#</style>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<pre>#}
+{##}
+{#</pre>#}
+{#<form action=""  align="center"  method="get">#}
+{#  <table  border="1" align="center" class="table table-bordered">#}
+{#    <tr>#}
+{#      <th width="146" scope="col">SI</th>#}
+{#      <th width="106" scope="col">Name</th>#}
+{#      <th width="83" scope="col">Username</th>#}
+{#      <th width="89" scope="col">Phone Number</th>#}
+{#      <th width="43" scope="col">DOB</th>#}
+{#        <th> Gender</th>#}
+{#      <th width="67" scope="col">Address</th>#}
+{#        <th></th>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td>{{ forloop.counter }}</td>#}
+{#      <td>{{ i.firstname}}<p> </p>{{i.lastname }}</td>#}
+{#      <td>{{ i.email }}</td>#}
+{#      <td>{{ i.phonenumber }}&nbsp;</td>#}
+{#      <td>{{ i.dob }}</td>#}
+{#              <td>{{ i.gender }}</td>#}
+{#    <td>{{ i.place }}<br>{{ i.post }}<br>{{ i.pin }}</td>#}
+{#     <td><a href="/blockuser/{{ i.LOGIN.id }}">block</a></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#<em></em>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}

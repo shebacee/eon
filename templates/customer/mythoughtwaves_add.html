@@ -1,0 +1,148 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Post Your Thoughts</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+    table {
+        width: 100%;
+        margin: 50px auto;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-collapse: separate;
+    }
+    th {
+        text-align: left;
+        padding: 10px;
+        background: #7a2f5b;
+        color: white;
+        border-radius: 5px 0 0 5px;
+    }
+    td {
+        padding: 10px;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    input:focus, textarea:focus, select:focus {
+        border-color: #7a2f5b;
+        outline: none;
+        box-shadow: 0 0 8px rgba(122, 47, 91, 0.5);
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background: #7a2f5b;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    input[type="submit"]:hover {
+        background: #5a2041;
+    }
+</style>
+</head>
+
+<body>
+    <form action="/add_mythoughtwaves_post" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table >
+            <tr>
+                <th>IMAGE</th>
+                <td><input type="file" name="image" id="image" required/></td>
+            </tr>
+            <tr>
+                <th>TITLE</th>
+                <td><input type="text" name="textfield" id="textfield" placeholder="Enter title..." required/></td>
+            </tr>
+            <tr>
+                <th>CONTENT</th>
+                <td><textarea name="textarea" id="textarea" cols="45" rows="5" placeholder="Write your content here..." required></textarea></td>
+            </tr>
+            <tr>
+                <th>CATEGORY</th>
+                <td>
+                    <select name="select">
+                        <option value="SELECT">SELECT</option>
+                        <option value="BLOG">BLOG</option>
+                        <option value="STORY">STORY</option>
+                        <option value="FORUM">FORUM</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="POST" />
+                </td>
+            </tr>
+        </table>
+    </form><br><br><br><br>
+</body>
+</html>
+
+{% endblock %}
+
+
+{#{% extends "customer/index.html" %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body><form action="/add_mythoughtwaves_post" method="post" enctype="multipart/form-data"><table width="356" border="1" >#}
+{#  <tr>#}
+{#                <th scope="row" align="left">IMAGE</th>#}
+{#                <td>#}
+{#                    <input type="file" name="image" id="image" class="form-control"/>#}
+{#                </td>#}
+{#            </tr>#}
+{#  <tr>#}
+{#    <th width="174" scope="row">TITLE</th>#}
+{#    <td width="166"><label for="textfield"></label>#}
+{#      <input type="text" name="textfield" id="textfield" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">CONTENT</th>#}
+{#    <td><label for="textarea"></label>#}
+{#      <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">CATEGORY</th>#}
+{#    <td><label for="select"></label>#}
+{#      <select name="select">#}
+{#          <option value="SELECT">SELECT</option>#}
+{#        <option value="BLOG">BLOG</option>#}
+{#        <option value="STORY">STORY</option>#}
+{#        <option value="FORUM">FORUM</option>#}
+{#      </select></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="POST" /></th>#}
+{#    </tr>#}
+{#</table>#}
+{#</form>#}
+{#<br><br><br><br><br><br><br>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}

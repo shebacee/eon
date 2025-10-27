@@ -1,0 +1,113 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+        /* Table Container */
+        .table-container {
+            width: 90%;
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 15px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Stylish Grey Header */
+        th {
+            background-color: #444; /* Dark Grey */
+            color: white !important; /* Ensuring white text */
+            padding: 12px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Grey Button for Unblock */
+        .btn-unblock {
+            background-color: #666; /* Medium Grey */
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-unblock:hover {
+            background-color: #444; /* Darker Grey */
+        }
+
+    </style>
+</head>
+
+<body><br><br><br>
+<form id="form1" name="form1" method="post" action="">
+
+  <table width="744" border="3">
+    <tr>
+      <th width="127" scope="col">SI NO</th>
+      <th width="155" scope="col">CUSTOMER_NAME</th>
+      <th width="116" scope="col">RATING</th>
+      <th width="175" scope="col">REVIEW_DATE</th>
+      <th width="137" scope="col">REVIEW</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.CUSTOMER.firstname }}</td>
+
+         <td>&nbsp;
+      {% if i.rating == "1" %}
+        ★
+      {% elif i.rating == "2" %}
+        ★★
+      {% elif i.rating == "3" %}
+        ★★★
+      {% elif i.rating == "4" %}
+        ★★★★
+      {% elif i.rating == "5" %}
+        ★★★★★
+      {% endif %}
+    </td>
+           <td>{{ i.date }}</td>
+      <td>&nbsp;{{ i.revw }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+
+</form><br><br><br>
+
+</body>
+</html>
+{% endblock %}

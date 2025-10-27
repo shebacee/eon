@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="/seller_addcat_post" method="post"><table width="338" border="1" align="center" style="margin-top: 10%">
+    {% csrf_token %}
+  <tr>
+    <th width="141" scope="row">Category name</th>
+    <td width="181"><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
+  </tr>
+   <tr>
+    <th width="141" scope="row">Description</th>
+    <td width="181"><label for="textfield"></label>
+      <label for="textarea"></label>
+      <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></td>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Add" /></th>
+    </tr>
+</table>
+</form>
+</body>
+</html>

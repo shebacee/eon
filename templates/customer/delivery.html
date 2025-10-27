@@ -1,0 +1,96 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Update Delivery Date</title>
+<style>
+    /* Table Styling */
+    table {
+        background: #f8f8f8;
+        border-collapse: collapse;
+        width: 50%;
+        margin: 10% auto;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background: #333;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    td {
+        background: #fff;
+        text-align: center;
+    }
+
+    input[type="date"] {
+        width: 90%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: 0.3s ease-in-out;
+    }
+
+    input[type="date"]:focus {
+        border-color: #7a2f5b;
+        box-shadow: 0 0 5px rgba(51, 7, 36, 0.5);
+        outline: none;
+    }
+
+    /* Button Styling */
+    .update-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #333; /* Dark Gray */
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+    }
+
+    .update-btn:hover {
+        background-color: #222; /* Slightly darker on hover */
+    }
+
+    /* Centering button row */
+    .button-row {
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+    <form id="form1" name="form1" method="post" action="/csupdate_delivery_post/{{ id }}/{{ status }}#aa">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>DELIVERY DATE</th>
+                <td><input type="date" name="textfield" id="textfield" /></td>
+            </tr>
+            <tr class="button-row">
+                <td colspan="2"><button type="submit" class="update-btn">UPDATE</button></td>
+            </tr>
+        </table>
+    </form><br><br><br>
+</body>
+</html>
+{% endblock %}

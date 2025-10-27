@@ -1,0 +1,110 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Place Order</title>
+<style>
+    /* Table styling */
+    table {
+        background: #e5dbe3;
+        border: solid white;
+        height: 300px;
+        width: 600px;
+        color: black;
+        border-radius: 10px;
+        opacity: 0.97;
+        margin: 0 auto;  /* Centers the table */
+    }
+
+    /* Input styling */
+    input, select {
+        width: 80%;
+        padding: 8px;
+        font-size: 14px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    input:focus {
+        border: 2px solid #7a2f5b;
+        box-shadow: 0 0 10px rgba(51, 7, 36, 0.7);
+        outline: none;
+        transform: scale(1.05);
+    }
+
+    /* Button styling */
+    .order-btn {
+        display: block;
+        width: 90%;  /* Makes the button fit well */
+        padding: 12px;
+        background-color: #333; /* Dark Gray */
+        color: white; /* White text */
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        margin: 10px auto; /* Centers the button */
+    }
+
+    .order-btn:hover {
+        background-color: #222; /* Slightly darker on hover */
+    }
+
+    /* Centering button row */
+    .button-row {
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/place_orderfrombook_post/{{ id }}/{{cslid}}/{{amt}}">
+    {% csrf_token %}
+    <br><br><br>
+
+    <table>
+        <tr align="center">
+            <th width="173">QUANTITY</th>
+            <td>
+                <select name="select" id="select5">
+                    <option>select</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </td>
+        </tr>
+        <tr align="center">
+            <th rowspan="5">ADDRESS</th>
+            <td><input type="text" name="textfield" id="textfield" placeholder="Pin" required/></td>
+        </tr>
+        <tr align="center">
+            <td><input type="text" name="textfield4" id="textfield4" placeholder="City" required/></td>
+        </tr>
+        <tr align="center">
+            <td><input type="text" name="textfield5" id="textfield5" placeholder="State" required/></td>
+        </tr>
+        <tr align="center">
+            <td><input type="text" name="textfield2" id="textfield2" placeholder="House/Flat/Office No" required/></td>
+        </tr>
+        <tr align="center">
+            <td><input type="text" name="textfield3" id="textfield3" placeholder="Road Name/Area/Colony" required/></td>
+        </tr >
+        <tr class="button-row">
+            <td colspan="2"><button type="submit" class="order-btn">PLACE ORDER</button></td>
+        </tr>
+    </table>
+</form>
+<br><br><br><br><br><br><br>
+</body>
+</html>
+{% endblock %}

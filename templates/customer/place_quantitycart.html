@@ -1,0 +1,176 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+        table {
+            background: #ccc2ca;
+            border: solid white;
+            height: 300px;  /* Reduced height */
+            width: 600px;   /* Reduced width */
+            color: black;
+            border-radius: 10px;
+            opacity: 0.97;
+            margin: 0 auto;  /* Centering the table */
+        }
+        input {
+            width: 80%; /* Slightly smaller input width */
+            padding: 8px; /* Reduced padding */
+            font-size: 14px; /* Reduced text size */
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input:focus {
+            border: 2px solid #7a2f5b;
+            box-shadow: 0 0 10px rgba(51, 7, 36, 0.7);
+            outline: none;
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+
+<body>
+<br><br><br>
+<form id="form1" name="form1" method="post" action="/place_orderfromcart_post/{{ id }}/{{ cslid }}/{{ amt }}" class="table table-bordered">
+    {% csrf_token %}
+
+      <table width="302" >
+        <tr>
+          <th scope="row">QUANTITY</th>
+          <td ><label for="select5"></label>
+            <select name="select" id="select5">
+                <option>select</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+
+            </select></td>
+        </tr>
+        <tr>
+          <th rowspan="5" scope="row">ADDRESS</th>
+          <td><input type="text" name="textfield" id="textfield" placeholder="Pin" required/></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="textfield4" id="textfield4" placeholder="City" required/></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="textfield5" id="textfield5" placeholder="State" required/></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="textfield2" id="textfield2" placeholder="House/Flat/Office No" required/></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="textfield3" id="textfield3" placeholder="Road Name/Area/Colony" required/></td>
+        </tr>
+        <tr align="center">
+          <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="PLACE ORDER" /></th>
+        </tr>
+      </table>
+</form><br><br><br>
+
+</body>
+</html>
+{% endblock %}
+
+
+
+
+{#{% extends "customer/index.html" %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#    <style>#}
+{#        table {#}
+{#            background: transparent;#}
+{#            border: solid white;#}
+{#            height: 100px;#}
+{#            width: 1000px;#}
+{#            color: black;#}
+{#            border-radius: 10px;#}
+{#            opacity: 0.97;#}
+{#        }#}
+{#        input {#}
+{#    width: 90%; /* Makes the input boxes wider */#}
+{#    padding: 10px; /* Adds space inside the box */#}
+{#    font-size: 16px; /* Increases text size */#}
+{#    border: 2px solid #ccc; /* Default border color */#}
+{#    border-radius: 5px; /* Rounds the corners */#}
+{#    transition: all 0.3s ease-in-out; /* Smooth animation */#}
+{#}#}
+{##}
+{#input:focus {#}
+{#    border: 2px solid #ff9900; /* Orange border when focused */#}
+{#    box-shadow: 0 0 10px rgba(255, 153, 0, 0.7); /* Glow effect */#}
+{#    outline: none; /* Removes default outline */#}
+{#    transform: scale(1.05); /* Slightly enlarges the input box */#}
+{#}#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#    </style>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<br><br><br>#}
+{#<form id="form1" name="form1" method="post" action="/place_orderfromcart_post/{{ id }}/{{cslid}}" class="table table-bordered">#}
+{#    {% csrf_token %}#}
+{##}
+{#      <table width="302" border="1">#}
+{#        <tr>#}
+{#          <th scope="row">QUANTITY</th>#}
+{#          <td ><label for="select5"></label>#}
+{#            <select name="select" id="select5">#}
+{#              <option>1</option>#}
+{#              <option>2</option>#}
+{#              <option>3</option>#}
+{#              <option>4</option>#}
+{#              <option>5</option>#}
+{#              <option>6</option>#}
+{#              <option>7</option>#}
+{#              <option>8</option>#}
+{#              <option>9</option>#}
+{#              <option>10</option>#}
+{#            </select></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#          <th rowspan="5" scope="row">ADDRESS</th>#}
+{#          <td><input type="text" name="textfield" id="textfield" placeholder="Pin"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#          <td><input type="text" name="textfield4" id="textfield4" placeholder="City"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#          <td><input type="text" name="textfield5" id="textfield5" placeholder="State"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#          <td><input type="text" name="textfield2" id="textfield2" placeholder="House/Flat/Office No" /></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#          <td><input type="text" name="textfield3" id="textfield3" placeholder="Road Name/Area/Colony" /></td>#}
+{#        </tr>#}
+{#        <tr align="center">#}
+{#          <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="PLACE ORDER#}
+{#      " /></th>#}
+{#        </tr>#}
+{#      </table>#}
+{#</form><br><br><br>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}

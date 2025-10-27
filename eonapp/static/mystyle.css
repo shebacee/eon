@@ -1,0 +1,36 @@
+ body {
+    --bg-color-light: #ffffff; /* Light mode background color */
+    --text-color-light: #000000; /* Light mode text color */
+    --bg-color-dark: #1f1f1f; /* Dark mode background color */
+    --text-color-dark: #ffffff; /* Dark mode text color */
+
+    background-color: var(--bg-color-light); /* Initial background color */
+    color: var(--text-color-light); /* Initial text color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+
+    font-family: Arial, sans-serif; /* Example font */
+}
+
+header {
+    padding: 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.content {
+    padding: 20px;
+}
+
+.dark-mode {
+    --bg-color-dark: #1f1f1f; /* Dark mode background color */
+    --text-color-dark: #ffffff; /* Dark mode text color */
+
+    background-color: var(--bg-color-dark); /* Updated background color */
+    color: var(--text-color-dark); /* Updated text color */
+}

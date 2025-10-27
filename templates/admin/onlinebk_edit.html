@@ -1,0 +1,116 @@
+{% extends "admin/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" align="center" class="table table-bordered" action="/onlinebk_edit_post/{{ data.id }}" enctype="multipart/form-data"><table width="426" border="1">
+  <tr>
+    <th width="242" scope="row" align='left'>BOOK</th>
+    <td width="168"><label for="textfield"></label>
+      <input type="text" name="textfield" value="{{ data.book_name }}book_name" id="textfield" readonly /></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">AUTHOR</th>
+    <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" value="{{ data.author }}" id="textfield2" readonly /></td>
+  </tr>
+<tr>
+    <th scope="row" align="left">TYPE</th>
+    <td width="181"><label  for="select"></label>
+     <select name="select1" value="{{ data.type }}" id="select1">
+         <option value=select>SELECT</option>
+         <option value=academic>ACADEMIC</option>
+         <option value=non-academic>NON-ACADEMIC</option>
+     </select> </td>
+  </tr>
+
+  <tr id="t2">
+    <th scope="row" align="left">GENRE</th>
+    <td width="181"><label for="select"></label>
+     <select name="select">
+         {% for i in data %}
+         <option value="{{ i.id }}">{{ i.categoryname }}</option>
+         {% endfor %}
+
+     </select> </td>
+  </tr>
+<tr id="t1">
+    <th scope="row" align="left">SUBJECT</th>
+    <td width="181"><label for="select"></label>
+     <select name="select2" value="{{ data.subject }}">
+         <option>MATHEMATICS</option>
+         <option>CHEMISTRY</option>
+         <option>PHYSICS</option>
+         <option>HISTORY</option>
+     </select> </td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">DESCRIPTION </th>
+    <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" value="{{ data.description }}" id="textfield5" /></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">IMAGE</th>
+    <td><label for="textfield8"></label>
+      <input type="file" name="image" id="image" /></td>
+  </tr>
+  <tr>
+    <th scope="row" align="left">FILE SIZE</th>
+    <td><label for="textfield14"></label>
+      <input type="text" name="textfield16" value="{{ data.filesize }}" id="textfield16" /></td>
+  </tr>
+<tr>
+    <th scope="row" align="left">LANGUAGE</th>
+    <td><label for="textfield14"></label>
+      <input type="text" name="textfield15" value="{{ data.language }}" id="textfield15" /></td>
+  </tr>
+<tr>
+    <th scope="row" align="left">NO. OF PAGES</th>
+    <td><label for="textfield14"></label>
+      <input type="text" name="textfield14" value="{{ data.no_ofpage}}" id="textfield14" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="ADD" /></th>
+    </tr>
+</table>
+    <script src="/static/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Hide GENRE and SUBJECT sections initially
+    $("#t1").hide();
+    $("#t2").hide();
+
+    // Show/Hide logic based on TYPE selection
+    $("#select1").change(function(){
+        const val = $("#select1").val();
+        if(val === "select"){
+            alert('Please select a valid type.');
+        } else if(val === "academic"){
+            $("#t1").show();
+            $("#t2").hide();
+        } else {
+            $("#t1").hide();
+            $("#t2").show();
+        }
+    });
+
+    // File size calculation and display
+    document.getElementById("fileField").addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const fileSizeInKB = (file.size / 1024).toFixed(2); // Convert to KB
+            document.getElementById("textfield16").value = fileSizeInKB + " KB";
+        }
+    });
+});
+</script>
+</form>
+</body>
+</html>
+{% endblock %}

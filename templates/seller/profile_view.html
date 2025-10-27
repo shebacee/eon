@@ -1,0 +1,106 @@
+{% extends 'seller/index.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profile</title>
+<style>
+  /* Centering the table */
+  .profile-container {
+    width: 70%;  /* Increased width */
+    margin: auto;
+    padding: 20px;
+  }
+
+  /* Styling the table */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+
+  .styled-table th, .styled-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .styled-table th {
+    background-color: #222;
+    color: white;
+    width: 30%;
+  }
+
+  .styled-table tr:last-child td {
+    text-align: center;
+  }
+
+  /* Neutral Hyperlink Styling */
+  .styled-table a {
+    text-decoration: none;
+    color: #555; /* Neutral Dark Gray */
+    font-weight: bold;
+  }
+
+  .styled-table a:hover {
+    text-decoration: underline;
+    color: #333; /* Darker Gray */
+  }
+
+  /* Dark Grey Button Styling */
+  .edit-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    background-color: #333; /* Dark Gray */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s ease;
+  }
+
+  .edit-btn:hover {
+    background-color: #222; /* Slightly Darker Gray */
+  }
+</style>
+</head>
+
+<body>
+<div class="profile-container">
+  <form id="form1" name="form1" method="post" action="/edit_profile_post">
+    <table class="styled-table">
+      <tr>
+        <th>NAME</th>
+        <td>{{ data.sellername }}</td>
+      </tr>
+      <tr>
+        <th>USERNAME</th>
+        <td>{{ data.email }}</td>
+      </tr>
+      <tr>
+        <th>PHONE NUMBER</th>
+        <td>{{ data.phonenumber }}</td>
+      </tr>
+      <tr>
+        <th>ADDRESS</th>
+        <td>{{ data.place }}, {{ data.post }}<br>{{ data.pincode }}</td>
+      </tr>
+      <tr>
+        <th>CERTIFICATE</th>
+        <td><a href="{{ data.certificate }}" target="_blank">View Certificate</a></td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="/edit_profile/{{ data.id }}#aa" class="edit-btn">Edit Profile</a></td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>
+{% endblock %}

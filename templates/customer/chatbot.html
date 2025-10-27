@@ -1,0 +1,189 @@
+
+    <style>
+        /* General container styling */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        /* Chat window styling */
+        #t4 {
+            width: 100%;
+            height: 400px;
+            overflow-y: scroll; /* Allow vertical scrolling */
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Message styling */
+        .message {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        /* Cyber's message (WhatsApp outgoing message style) */
+        .cyber-message {
+            justify-content: flex-end;
+        }
+
+        .cyber-message p {
+            background-color: #5DADE2;
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            max-width: 80%;
+            word-wrap: break-word; /* Ensure text wraps */
+            overflow-wrap: break-word; /* Handle long words properly */
+        }
+
+        /* User's message (WhatsApp incoming message style) */
+        .user-message {
+            justify-content: flex-start;
+        }
+
+        .user-message p {
+            background-color: #AAB7B8;
+            color: #000;
+            border-radius: 8px;
+            padding: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Input area styling */
+        #t2 {
+            width: 100%;
+        }
+
+        .form-control {
+            width: 80%;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-success {
+            background-color: #25D366;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .btn-success:hover {
+            background-color: #20b956;
+        }
+
+        /* Message error display */
+        #sp {
+            color: #f00;
+            display: none;
+        }
+    </style>
+
+    <form action="" method="post">
+        <div class="container">
+            <div id="t4">
+                <!-- Chat messages will be appended here dynamically -->
+            </div>
+
+            <table id="t2" align="center">
+                <tr>
+                    <td><input type="hidden" id="v"/></td>
+                    <td><input type="hidden" id="h"/></td>
+                    <td><input type="hidden" id="u" value="{{ u }}"/></td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="Type a message" name="e" id="e" />
+                    </td>
+                    <td>
+                        <input type="button" name="chat" id="chat" value="Send" class="btn-success"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="5">
+                        <span id="sp"><i>* Message cannot be empty</i></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+    <script type="text/javascript" src="/static/chatbot/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#sp").hide();
+            var rid = $("#u").val();
+
+            function abc() {
+                $.ajax({
+                    url: '/chatrply',
+                    type: 'post',
+                    data: {uid: rid},
+                    success: function (res) {
+                        var a = res;
+                        var b = a["status"];
+                        if (b == "ok") {
+                            var s = a['data'];
+                            var len = s.length;
+                            $("#t4").text(""); // Clear chat box
+
+                            for (i = 0; i < len; i++) {
+                                var x = s[i];
+                                var type = x['type'];
+                                var msg = x['message'];
+
+                                if (type == "user") {
+                                    $("#t4").append('<div class="message cyber-message"><p>' + msg + '</p></div>');
+                                }
+                                if (type == "chatbot") {
+                                    $("#t4").append('<div class="message user-message"><p>' + msg + '</p></div>');
+                                }
+                            }
+
+                            // Automatically scroll to the bottom of the chat
+                            $('#t4').scrollTop($('#t4')[0].scrollHeight);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+
+            var aa = setInterval(abc, 1000);
+
+            $("#chat").click(function () {
+                var d = $("#e").val();
+                var rid = $("#u").val();
+
+                if (d == "") {
+                    $("#sp").show();
+                } else {
+                    $("#sp").hide();
+
+                    $.ajax({
+                        url: '/chatsnd',
+                        type: 'POST',
+                        data: {n: rid, msg: d},
+                        success: function (res) {
+                            var result = res["status"];
+                            $("#e").val(""); // Clear input box after sending
+                        },
+                        error: function (err) {
+                            alert(err);
+                        }
+                    });
+                }
+            });
+        });
+    </script>

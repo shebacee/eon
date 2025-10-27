@@ -1,0 +1,134 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Question</title>
+<style>
+    /* Form Container */
+    .form-container {
+        width: 300px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    /* Input Fields */
+    input[type="text"], select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    /* Dropdown */
+    select {
+        cursor: pointer;
+    }
+
+    /* Centered Black Submit Button */
+    .btn-submit {
+        display: block;
+        width: 100%;
+        background-color: black;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+        background-color: #222;
+    }
+
+</style>
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="form1" name="form1" method="post" action="/add_qtn_post/{{ id }}">
+            <input type="text" name="textfield" id="textfield" placeholder="QUESTION" required /><br>
+            <input type="text" name="textfield2" id="textfield2" placeholder="OPTION A" required /><br>
+            <input type="text" name="textfield3" id="textfield3" placeholder="OPTION B" required /><br>
+            <input type="text" name="textfield4" id="textfield4" placeholder="OPTION C" required /><br>
+            <input type="text" name="textfield5" id="textfield5" placeholder="OPTION D" required /><br><br>
+
+            <select name="select" id="select" required>
+                <option value="">CHOOSE AN OPTION</option>
+                <option value="OPTION A">OPTION A</option>
+                <option value="OPTION B">OPTION B</option>
+                <option value="OPTION C">OPTION C</option>
+                <option value="OPTION D">OPTION D</option>
+            </select><br><br><br>
+
+            <button type="submit" class="btn-submit">ADD QUESTION</button>
+        </form><br>
+    </div>
+</body><br><br><br><br><br>
+</html>
+
+{% endblock %}
+
+
+{#{% extends "customer/index.html" %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/add_qtn_post/{{ id }}"><br><br>#}
+{#  <table width="174" border="1">#}
+{#    <tr>#}
+{#      <td width="164"><label for="textfield"></label>#}
+{#      <input type="text" name="textfield" id="textfield"  placeholder="QUESTION" required/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><label for="textfield2"></label>#}
+{#      <input type="text" name="textfield2" id="textfield2" placeholder="OPTION A" required/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><label for="textfield3"></label>#}
+{#      <input type="text" name="textfield3" id="textfield3" placeholder="OPTION B" required/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><label for="textfield4"></label>#}
+{#      <input type="text" name="textfield4" id="textfield4" placeholder="OPTION C"required/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><label for="textfield5"></label>#}
+{#      <input type="text" name="textfield5" id="textfield5"placeholder="OPTION D" required/></td>#}
+{#    </tr>#}
+{#     <tr>#}
+{#      <td width="176"><label for="select"></label>#}
+{#        <select name="select" id="select">#}
+{#                    <option>CHOOSE AN OPTION </option>#}
+{#        <option value="OPTION A">OPTION A</option>#}
+{#        <option value="OPTION B">OPTION B</option>#}
+{#        <option value="OPTION C">OPTION C</option>#}
+{#        <option value="OPTION D">OPTION D</option>#}
+{#      </select></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td align="center"><input type="submit" name="button" id="button" value="ADD QUESTION" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form><br><br><br><br><br><br><br><br><br><br><br>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}

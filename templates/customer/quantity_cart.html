@@ -1,0 +1,35 @@
+{% extends "customer/bookinterface_sell.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/add_cart_post/{{ id }}">
+    {% csrf_token %}
+  <table width="365" border="1" class="table table-dark">
+    <tr>
+      <th width="173" scope="row">QUANTITY</th>
+      <td width="176">
+        <select name="select" id="select" class="form-control">
+            <option>select</option>
+        <option >1</option>
+        <option >2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" id="button" value="ADD TO CART
+      " class="btn btn-success" /></div></th>
+    </tr>
+  </table>
+</form><br><br><br><br>
+</body>
+</html>
+{% endblock %}

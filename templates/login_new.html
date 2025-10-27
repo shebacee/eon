@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Welcome Back</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #2563eb 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.3) 0%, transparent 70%);
+      top: -250px;
+      right: -250px;
+      border-radius: 50%;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+      bottom: -200px;
+      left: -200px;
+      border-radius: 50%;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 450px;
+      padding: 48px;
+      position: relative;
+      z-index: 1;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .login-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0a1628;
+      margin-bottom: 8px;
+    }
+
+    .login-header p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #334155;
+      font-size: 14px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="password"]:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .checkbox-group label {
+      color: #64748b;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 32px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .divider span {
+      padding: 0 16px;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .register-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .register-links a {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      color: #2563eb;
+      text-decoration: none;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .register-links a:hover {
+      background: #f1f5f9;
+      border-color: #2563eb;
+    }
+
+    #video {
+      display: none;
+    }
+
+    #canvas {
+      display: none;
+    }
+
+    .camera-indicator {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 12px;
+      height: 12px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 32px 24px;
+      }
+
+      .login-header h1 {
+        font-size: 28px;
+      }
+
+      .register-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="camera-indicator" title="Camera Active"></div>
+
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Sign in to continue to your account</p>
+    </div>
+
+    <form id="form1" name="form1" method="post" action="/login_post">
+      <div class="form-group">
+        <label for="user">Username</label>
+        <input id="user" name="u" type="text" placeholder="Enter your username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pass">Password</label>
+        <input id="pass" name="p" type="password" placeholder="Enter your password" data-type="password" required>
+      </div>
+
+      <div class="checkbox-group">
+        <input id="check" type="checkbox" checked>
+        <label for="check">Keep me signed in</label>
+      </div>
+
+      <button type="submit" class="submit-btn" onclick="captureAndSubmit(event)">
+        Sign In
+      </button>
+
+      <div class="divider">
+        <span>New here?</span>
+      </div>
+
+      <div class="register-links">
+        <a href="/reg_seller">Seller Register</a>
+        <a href="/reg_cust">Customer Register</a>
+      </div>
+
+      <video id="video" autoplay></video>
+      <canvas id="canvas"></canvas>
+      <input type="hidden" name="image" id="image" />
+    </form>
+  </div>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const imageInput = document.getElementById('image');
+
+    // Open the camera
+    navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+      video.srcObject = stream;
+    }).catch((err) => {
+      console.error("Error accessing the camera: ", err);
+    });
+
+    // Capture the image and attach it to the form
+    function captureAndSubmit(event) {
+      event.preventDefault();
+      const ctx = canvas.getContext('2d');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      imageInput.value = canvas.toDataURL('image/png');
+      document.getElementById('form1').submit();
+    }
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>EON-LOGIN</title>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet'
+    href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
+  <link rel="stylesheet" href="./static/login_new_asset/style.css">
+
+</head>
+
+<body>
+  <div class="screen-1">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+      width="300" height="300" viewbox="0 0 640 480" xml:space="preserve">
+      <g transform="matrix(3.31 0 0 3.31 320.4 240.4)">
+        <circle
+          style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(61,71,133); fill-rule: nonzero; opacity: 1;"
+          cx="0" cy="0" r="40"></circle>
+      </g>
+      <g transform="matrix(0.98 0 0 0.98 268.7 213.7)">
+        <circle
+          style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"
+          cx="0" cy="0" r="40"></circle>
+      </g>
+      <g transform="matrix(1.01 0 0 1.01 362.9 210.9)">
+        <circle
+          style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"
+          cx="0" cy="0" r="40"></circle>
+      </g>
+      <g transform="matrix(0.92 0 0 0.92 318.5 286.5)">
+        <circle
+          style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"
+          cx="0" cy="0" r="40"></circle>
+      </g>
+      <g transform="matrix(0.16 -0.12 0.49 0.66 290.57 243.57)">
+        <polygon
+          style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"
+          points="-50,-50 -50,50 50,50 50,-50 "></polygon>
+      </g>
+      <g transform="matrix(0.16 0.1 -0.44 0.69 342.03 248.34)">
+        <polygon
+          style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"
+          vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "></polygon>
+      </g>
+    </svg>
+    <form action="/login_post" method="post">
+      <div class="email">
+        <label for="email">Username</label>
+        <div class="sec-2">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="text" name="u">
+        </div>
+      </div><br>
+      <div class="password">
+        <label for="password">Password</label>
+        <div class="sec-2">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input class="pas" type="password" name="p" />
+          {# <ion-icon class="show-hide" name="eye-outline"></ion-icon>#}
+        </div>
+      </div><br>
+      <p align="center"><button class="login">Login </button></p>
+      <div class="footer"><span><a href="/reg_seller">Seller SignUp</a></span><span><a href="/reg_cust">Customer
+            SignUp</a></span></div>
+  </div>
+  </form>
+
+</body>
+
+</html> -->

@@ -1,0 +1,61 @@
+{% extends "admin/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>/* Table Styles */
+table {
+    background-color: white; /* Solid white background for visibility */
+    border-collapse: collapse;
+    width: 80%; /* Adjust as needed */
+}
+
+th, td {
+    background-color: white; /* Solid white cells */
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd; /* Borders for better visibility */
+    color: black; /* Ensure text is visible */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for alternating rows */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Optional highlight on hover */
+}
+</style>
+</head>
+
+<body><form action=""  align="center"  method="get">
+    <table width="496" border="1" align="center" class="table table-bordered">
+  <tr>
+    <th width="23" scope="col">SI</th>
+    <th width="200" scope="col">Review</th>
+    <th width="44" scope="col">Date</th>
+    <th width="129" scope="col">Customer Info</th>
+    <th width="129" scope="col">Book</th>
+    <th width="180" scope="col">Rating</th>
+      <th></th>
+  </tr>
+     {% for i in data %}
+  <tr align="center">
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.revw }}</td>
+    <td>{{ i.date }}&nbsp;</td>
+    <td>{{ i.CUSTOMER.firstname }}</td>
+    <td>{{ i.BOOK.book_name }}</td>
+    <td>{{ i.rating }}</td>
+        <td><a href="/dltreview/{{ i.id }}">delete</a></td>
+
+  </tr>
+          {% endfor %}
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title><style>
+        /* Table Container */
+        .table-container {
+            width: 90%;
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 15px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Stylish Grey Header */
+        th {
+            background-color: #444; /* Dark Grey */
+            color: white !important; /* Ensuring white text */
+            padding: 12px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Grey Button for Unblock */
+        .btn-unblock {
+            background-color: #666; /* Medium Grey */
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-unblock:hover {
+            background-color: #444; /* Darker Grey */
+        }
+
+    </style>
+</head>
+<body><form action="" method="get" align="center">
+<div align="right">
+    <br><br>
+
+    <select id="select1" name="select">
+        <option >Select book type</option>
+        <option value="seller">seller</option>
+        <option value="customer">customer</option>
+    </select>
+    <br><br><br><br><br>
+</div>
+
+
+    <table border="1" id = 'tb1'>
+    <tr>
+        <th width="112" scope="col">SI</th>
+      <th width="170" scope="col">ORDER STATUS</th>
+        <th width="230" scope="col">ORDER DATE</th>
+      <th width="230" scope="col">DELIVERY DATE</th>
+      <th width="218" scope="col">AMOUNT</th>
+      <th width="206" scope="col">PAYMENT METHOD</th>
+                <th width="206" scope="col">PAYMENT STATUS</th>
+      <th width="242" scope="col">SHIPPING ADDRESS</th>
+      <th  scope="col">REASON TO CANCEL</th>
+        <th></th>
+
+        <th></th>
+    </tr>
+      {% for i in res %}
+
+    <tr>
+          <td>{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.orderstatus }}</td>
+      <td>{{ i.date }}</td>
+           <td>{{ i.deliverydate }}</td>
+      <td>&nbsp;{{ i.totalamount }}</td>
+      <td>&nbsp;{{ i.paymentmethod }}</td>
+             <td>&nbsp;{{ i.paymentstatus }}</td>
+    <td>&nbsp;{{ i.house }},{{ i.colony }},<br>{{ i.city }},{{ i.state }},<br>{{ i.pin }}</td>
+      <td>&nbsp;{{ i.ordercancellationreason }}</td>
+      <td><a href="/my_order_sub/{{ i.id }}#aa">view</a><br>
+          {% if i.orderstatus != "cancelled" %}
+    {% if i.paymentstatus == "pending" %}
+        <a href="/payment/{{ i.id }}/{{ i.totalamount }}">Pay Now</a>
+    {% else %}
+        <p style="color: red">Already paid</p>
+    {% endif %}
+{% endif %}
+</td>
+
+<td>
+    {% if i.orderstatus == 'cancelled' %}
+        Order cancelled
+    {% elif i.orderstatus == 'approved' or i.orderstatus == 'pending' %}
+        <a href="/my_cust_order_cancel/{{ i.id }}#aa">cancel order</a>
+    {% else %}
+        Order placed
+    {% endif %}
+</td>
+
+
+  </tr>
+      {% endfor %}
+  </table><br><br><br><br>
+
+<br><br>
+
+<table border="1" id="tb2">
+    <tr>
+        <th width="112" scope="col">SI</th>
+      <th width="170" scope="col">ORDER STATUS</th>
+        <th width="230" scope="col">ORDER DATE</th>
+      <th width="230" scope="col">DELIVERY DATE</th>
+      <th width="218" scope="col">AMOUNT</th>
+      <th width="206" scope="col">PAYMENT METHOD</th>
+        <th width="206" scope="col">PAYMENT STATUS</th>
+      <th width="242" scope="col">SHIPPING ADDRESS</th>
+      <th width="230" scope="col">REASON TO CANCEL</th>
+      <th width="106" scope="col">&nbsp;</th>
+        <th></th>
+    </tr>
+      {% for i in data1 %}
+
+   <tr>
+       <td>{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.orderstatus }}</td>
+      <td>{{ i.date }}</td>
+           <td>{{ i.deliverydate }}</td>
+      <td>&nbsp;{{ i.totalamount }}</td>
+      <td>&nbsp;{{ i.paymentmethod }}</td>
+         <td>&nbsp;{{ i.paymentstatus }}</td>
+    <td>&nbsp;{{ i.house }},{{ i.colony }},<br>{{ i.city }},{{ i.state }},<br>{{ i.pin }}</td>
+      <td>&nbsp;{{ i.ordercnclreason }}</td>
+      <td><a href="/my_seller_order_sub/{{ i.id }}#aa">view</a><br>
+{% if i.orderstatus != "cancelled" %}
+    {% if i.paymentstatus == "pending" %}
+        <a href="/payment/{{ i.id }}/{{ i.totalamount }}#aa">Pay Now</a>
+    {% else %}
+        <p style="color: red">Already paid</p>
+    {% endif %}
+{% endif %}
+</td>
+
+<td>
+    {% if i.orderstatus == 'cancelled' %}
+        Order cancelled
+    {% elif i.orderstatus == 'approved' or i.orderstatus == 'pending' %}
+        <a href="/my_seller_order_cancel/{{ i.id }}#aa">cancel order</a>
+    {% else %}
+        Order placed
+    {% endif %}
+</td>
+  </tr>
+      {% endfor %}
+  </table><br><br><br><br>
+
+
+</form>
+</body>
+<script src="/static/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#tb1").hide();
+        $("#tb2").hide();
+  $("#select1").change(function(){
+      var val=$("#select1").val();
+      if(val == "Select book type"){
+          $("#tb1").hide();
+        $("#tb2").hide();
+        alert("Select book type");
+      }
+      else if(val == "seller"){
+          $("#tb2").show();
+        $("#tb1").hide();
+      } else {
+          $("#tb2").hide();
+        $("#tb1").show();
+      }
+  });
+});
+</script>
+</html>
+{% endblock %}

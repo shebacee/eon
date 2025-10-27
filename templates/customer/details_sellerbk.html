@@ -1,0 +1,77 @@
+{% extends "customer/bookinterface_sell.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+  /* Make hyperlinks white */
+  a {
+    color: grey;
+    text-decoration: none; /* Optional: remove underline */
+  }
+
+  /* Add hover effect for better visibility */
+  a:hover {
+    color: #ccc; /* Light gray on hover */
+    text-decoration: underline; /* Optional: underline on hover */
+  }
+</style>
+</head>
+
+<body>
+
+<form id="form1" name="form1" method="post" action="/view_customer_book_post" class="table table-hover"><center>
+<table width="347" border="1">
+          {% for i in data %}
+  <tr>
+    <th width="178" scope="row">IMAGE</th>
+    <td width="153"><img src="{{ i.image }}" width="100" height="100" alt=""/></td>
+  </tr>
+  <tr>
+    <th scope="row">BOOK</th>
+    <td>{{ i.book_name }}</td>
+  </tr>
+  <tr>
+    <th scope="row">AUTHOR</th>
+    <td>{{ i.author }}</td>
+  </tr>
+  <tr>
+    <th scope="row">GENRE</th>
+    <td>{{ i.GENRE.categoryname }}</td>
+  </tr>
+  <tr>
+    <th scope="row">DESCRIPTION</th>
+    <td>{{ i.description }}</td>
+  </tr>
+  <tr>
+    <th scope="row">PRICE</th>
+    <td>{{ i.price }}</td>
+  </tr>
+  <tr>
+    <th scope="row">DISCOUNT</th>
+    <td>{{ i.discount }}</td>
+  </tr>
+  <tr>
+    <th scope="row">QUANTITY</th>
+    <td>{{ i.availability }}</td>
+  </tr>
+  <tr>
+    <th scope="row">NO. OF PAGES</th>
+    <td>{{ i.numberofpages }}</td>
+  </tr>
+  <tr>
+    <th scope="row"  align="center" ><a href="/add_cart/{{ i.id }}#aa" class="btn btn-outline-dark">Add to Cart</a></th>
+  <td align="center"><a href="/place_orderfrombookseller/{{ i.id }}/{{ i.LOGIN.id }}/{{ i.price }}#aa" class="btn btn-outline-dark">Place order</a></td>
+  </tr>
+  <tr>
+    <td scope="row" align="center" ><a href="/add_review/{{ i.id }}#aa">add review</a></td>
+    <td align="center"><a href="/view_allreview/{{ i.id }}#aa">view all review</a></td>
+  </tr>
+          {% endfor %}
+</table></center></form>
+</body>
+</html>
+{% endblock %}

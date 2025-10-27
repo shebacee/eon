@@ -1,0 +1,71 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Order</title>
+
+    <style>
+        /* Styling for the form container */
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Textarea Styling */
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            outline: none;
+            transition: border 0.3s ease-in-out;
+        }
+
+        textarea:focus {
+            border: 1px solid #444;
+        }
+
+        /* Submit Button Styling */
+        input[type="submit"] {
+            width: 100%;
+            background-color: #d9534f;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="form1" name="form1" method="post" action="/my_cust_order_cancel_post/{{ id }}">
+            <textarea name="textarea" id="textarea" cols="45" rows="5" placeholder="Enter order cancellation reason..." required></textarea>
+            <input type="submit" name="button" id="button" value="SEND" />
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "seller/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Change Password</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/seller_chpass_post">
+    {% csrf_token %}
+  <table width="450" border="0" align="center" style="margin-top: 10%; border-collapse: collapse; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 20px; color: #333;">
+  <tr>
+    <th width="200" style="padding: 12px; text-align: left; color: #333;">Current Password</th>
+    <td width="250" style="padding: 12px;">
+      <input type="password" name="textfield" id="textfield" class="styled-input" required/>
+    </td>
+  </tr>
+  <tr>
+    <th style="padding: 12px; text-align: left; color: #333;">New Password</th>
+    <td style="padding: 12px;">
+      <input type="password" name="textfield2" id="textfield2" class="styled-input" required/>
+    </td>
+  </tr>
+  <tr>
+    <th style="padding: 12px; text-align: left; color: #333;">Confirm Password</th>
+    <td style="padding: 12px;">
+      <input type="password" name="textfield3" id="textfield3" class="styled-input" required />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center; padding: 15px;">
+      <input type="submit" value="Submit" class="submit-btn">
+    </td>
+  </tr>
+</table>
+
+<style>
+  /* Base input styling */
+  .styled-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #333; /* Dark Grey border */
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    color: #333; /* Dark Grey text */
+    transition: all 0.3s ease-in-out;
+    outline: none;
+  }
+
+  /* Outline effect when selected */
+  .styled-input:focus {
+    border: 2px solid #222; /* Slightly darker grey */
+    box-shadow: 0 0 10px rgba(51, 51, 51, 0.6); /* Soft glow effect */
+    transform: scale(1.02); /* Slightly enlarges the input */
+  }
+
+  /* Submit button styling */
+  .submit-btn {
+    background: #333; /* Dark Grey */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+  }
+
+  /* Submit button hover effect */
+  .submit-btn:hover {
+    background: #222; /* Slightly darker grey */
+    transform: scale(1.05);
+  }
+</style>
+
+</form><br><br><br>
+</body>
+</html>
+{% endblock %}

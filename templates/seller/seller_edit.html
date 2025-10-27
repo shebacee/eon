@@ -1,0 +1,156 @@
+{% extends 'seller/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/edit_profile_post/{{ data.id }}" enctype="multipart/form-data"><br><br>
+
+    <style>
+    table {
+    width: 100%; /* Make it wider */
+    max-width: 900px; /* Prevents it from being too narrow */
+    border-collapse: collapse;
+    background: #f8f9fa;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto; /* Center the table */
+}
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd; /* Subtle row separators */
+    }
+
+    th {
+        background-color: #343a40; /* Dark header */
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Alternating row color */
+    }
+
+    tr:hover {
+        background-color: #e9ecef; /* Light highlight on hover */
+        transition: 0.3s ease-in-out;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    input[type="text"]:focus {
+        border-color: darkgrey; /* Highlight on focus */
+        box-shadow: 0 0 5px rgba(204, 194, 202, 0.5);
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background: darkgrey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background: #0056b3; /* Darker blue on hover */
+    }
+</style>
+
+<table>
+  <tr>
+    <th>SELLER NAME</th>
+    <td><input type="text" name="textfield" id="textfield" value="{{ data.sellername }}" /></td>
+  </tr>
+  <tr>
+    <th>USERNAME</th>
+    <td><input type="text" name="textfield2" value="{{ data.email }}" id="textfield2" readonly /></td>
+  </tr>
+  <tr>
+    <th>PHNO.</th>
+    <td><input type="text" name="textfield3" value="{{data.phonenumber }}" id="textfield3" pattern="\d{10}"/></td>
+  </tr>
+  <tr>
+    <th>PLACE</th>
+    <td><input type="text" name="textfield4" value="{{ data.place }}" id="textfield4" /></td>
+  </tr>
+  <tr>
+    <th>POST</th>
+    <td><input type="text" name="textfield6" value="{{ data.post }}" id="textfield6" /></td>
+  </tr>
+  <tr>
+    <th>PINCODE</th>
+    <td><input type="text" name="textfield7" value="{{ data.pincode }}" id="textfield7" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="submit" name="button" id="button" value="UPDATE" /></td>
+  </tr>
+</table>
+
+{#    <br><br><br>#}
+{##}
+{#<table width="408" border="1">#}
+{#  <tr align="left">#}
+{#    <th width="258" scope="row">SELLER NAME</th>#}
+{#    <td width="134">#}
+{#      <input type="text" name="textfield" id="textfield" value="{{ data.sellername }}" />#}
+{#    </td>#}
+{#  </tr>#}
+{#  <tr align="left">#}
+{#    <th scope="row">USERNAME</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield2" value="{{ data.email }}" id="textfield2" readonly />#}
+{#    </td>#}
+{#  </tr>#}
+{#  <tr align="left">#}
+{#    <th scope="row">PHNO.</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield3" value="{{data.phonenumber }}" id="textfield3" />#}
+{#    </td>#}
+{#  </tr>#}
+{#  <tr align="left">#}
+{#    <th scope="row"><p>PLACE</p></th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield4" value="{{ data.place }}" id="textfield4" />#}
+{#    </td>#}
+{#  </tr>#}
+{#  <tr align="left">#}
+{#    <th scope="row">POST</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield6" value="{{ data.post }}" id="textfield6" />#}
+{#    </td>#}
+{#  </tr>#}
+{#  <tr align="left">#}
+{#    <th scope="row">PINCODE</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield7" value="{{ data.pincode }}" id="textfield7" />#}
+{#    </td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th colspan="2" scope="row">#}
+{#      <input type="submit" name="button" id="button" value="UPDATE" />#}
+{#    </th>#}
+{#  </tr>#}
+{#</table>#}
+</form>    <br><br><br>
+</body>
+</html>
+{% endblock %}

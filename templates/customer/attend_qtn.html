@@ -1,0 +1,274 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+<style>
+    /* Centered Form Container */
+    .quiz-container {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    /* Score Styling */
+    h2 {
+        text-align: center;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    /* Radio Buttons Styling */
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    /* NEXT Button */
+    .btn-next {
+        display: block;
+        width: 100%;
+        background-color: black;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-next:hover {
+        background-color: #222;
+    }
+
+    /* Error Message */
+    .error-message {
+        color: red;
+        font-size: 14px;
+        display: none;
+        margin-top: 5px;
+    }
+</style>
+
+<script>
+    function validateForm(event) {
+        const options = document.getElementsByName("radio");
+        let isChecked = false;
+
+        for (let option of options) {
+            if (option.checked) {
+                isChecked = true;
+                break;
+            }
+        }
+
+        if (!isChecked) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById("error-msg").style.display = "block";
+        }
+    }
+</script>
+
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h2>Score : {{ score }}</h2>
+
+        <form id="form1" name="form1" method="post" action="/attend_qtn_post/{{ id }}#aa" onsubmit="validateForm(event)">
+            <input type="hidden" name="ans" value="{{ data.answers }}" />
+
+            <table>
+                <tr>
+                    <td><strong>Q1.</strong></td>
+                    <td>{{ data.questions }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>
+                            <input type="radio" name="radio" value="{{ data.option_a }}" />
+                            {{ data.option_a }}
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>
+                            <input type="radio" name="radio" value="{{ data.option_b }}" />
+                            {{ data.option_b }}
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>
+                            <input type="radio" name="radio" value="{{ data.option_c }}" />
+                            {{ data.option_c }}
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>
+                            <input type="radio" name="radio" value="{{ data.option_d }}" />
+                            {{ data.option_d }}
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span id="error-msg" class="error-message">Please select an option before proceeding.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="btn-next">NEXT</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}
+
+
+{#{% extends "customer/index.html" %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#<meta charset="UTF-8">#}
+{#<meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#<title>Quiz</title>#}
+{#<style>#}
+{#    /* Centered Form Container */#}
+{#    .quiz-container {#}
+{#        width: 400px;#}
+{#        margin: 50px auto;#}
+{#        padding: 20px;#}
+{#        background: white;#}
+{#        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);#}
+{#        border-radius: 10px;#}
+{#        text-align: center;#}
+{#    }#}
+{##}
+{#    /* Score Styling */#}
+{#    h2 {#}
+{#        text-align: center;#}
+{#    }#}
+{##}
+{#    /* Table Styling */#}
+{#    table {#}
+{#        width: 100%;#}
+{#        border-collapse: collapse;#}
+{#    }#}
+{##}
+{#    td {#}
+{#        padding: 10px;#}
+{#        border: 1px solid #ddd;#}
+{#    }#}
+{##}
+{#    /* Radio Buttons Styling */#}
+{#    input[type="radio"] {#}
+{#        margin-right: 10px;#}
+{#    }#}
+{##}
+{#    /* NEXT Button */#}
+{#    .btn-next {#}
+{#        display: block;#}
+{#        width: 100%;#}
+{#        background-color: black;#}
+{#        color: white;#}
+{#        padding: 12px;#}
+{#        font-size: 16px;#}
+{#        border-radius: 5px;#}
+{#        border: none;#}
+{#        cursor: pointer;#}
+{#        transition: 0.3s;#}
+{#    }#}
+{##}
+{#    .btn-next:hover {#}
+{#        background-color: #222;#}
+{#    }#}
+{##}
+{#</style>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#    <div class="quiz-container">#}
+{#        <h2>Score : {{ score }}</h2>#}
+{##}
+{#        <form id="form1" name="form1" method="post" action="/attend_qtn_post/{{ id }}#aa">#}
+{#            <input type="hidden" name="ans" value="{{ data.answers }}" />#}
+{##}
+{#            <table>#}
+{#                <tr>#}
+{#                    <td><strong>Q1.</strong></td>#}
+{#                    <td>{{ data.questions }}</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="2">#}
+{#                        <label>#}
+{#                            <input type="radio" name="radio" value="{{ data.option_a }}" required />#}
+{#                            {{ data.option_a }}#}
+{#                        </label>#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="2">#}
+{#                        <label>#}
+{#                            <input type="radio" name="radio" value="{{ data.option_b }}" />#}
+{#                            {{ data.option_b }}#}
+{#                        </label>#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="2">#}
+{#                        <label>#}
+{#                            <input type="radio" name="radio" value="{{ data.option_c }}" />#}
+{#                            {{ data.option_c }}#}
+{#                        </label>#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="2">#}
+{#                        <label>#}
+{#                            <input type="radio" name="radio" value="{{ data.option_d }}" />#}
+{#                            {{ data.option_d }}#}
+{#                        </label>#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="2">#}
+{#                        <button type="submit" class="btn-next">NEXT</button>#}
+{#                    </td>#}
+{#                </tr>#}
+{#            </table>#}
+{#        </form>#}
+{#    </div>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+{##}
+{##}

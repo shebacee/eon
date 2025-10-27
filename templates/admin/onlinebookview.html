@@ -1,0 +1,84 @@
+{% extends "admin/onlinebkview_interface.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+  /* Make hyperlinks white */
+  a {
+    color: grey;
+    text-decoration: none; /* Optional: remove underline */
+  }
+
+  /* Add hover effect for better visibility */
+  a:hover {
+    color: #ccc; /* Light gray on hover */
+    text-decoration: underline; /* Optional: underline on hover */
+  }
+</style>
+</head>
+<body>
+<pre>
+
+
+
+</pre>
+<form id="form1" name="form1" align="center" method="post" action="">
+
+   <table width="347" border="1" class="table table-hover">
+         {% for i in data %}
+
+          <tr>
+       <th colspan="2" scope="row"><img src="{{ i.image }}" width="200" height="200" alt=""></th>
+     </tr>
+     <tr>
+       <th scope="row">BOOK</th>
+       <td>{{ i.book_name }}</td>
+     </tr>
+     <tr>
+       <th scope="row">AUTHOR</th>
+       <td>{{ i.author }}</td>
+     </tr>
+     <tr>
+       <th scope="row">TYPE</th>
+       <td>{{ i.type }}</td>
+     </tr>
+     <tr>
+       <th scope="row">SUBJECT</th>
+       <td>{{ i.subject }}</td>
+     </tr>
+     <tr>
+       <th scope="row">GENRE</th>
+       <td>{% if i.type == 'academic' %}
+              {% else %}
+              {{ i.GENRE.categoryname }}
+
+          {% endif %}</td>
+     </tr>
+     <tr>
+       <th scope="row">DESCRIPTION</th>
+       <td>{{ i.description }}</td>
+     </tr>
+     <tr>
+       <th scope="row">DETAILS</th>
+       <td>File size : {{ i.filesize }}<br>
+          Language : {{ i.language }}<br>
+          No. of pages : {{ i.no_ofpage }}</td>
+     </tr>
+{#     <tr>#}
+{#       <th colspan="2" scope="row"><a href="/onlinebk_reviw/{{ i.id }}#aa">view reviews n rating</a></th>#}
+{#     </tr>#}
+     <tr>
+       <td scope="row" align="center"><a href="/onlinebookedit/{{ i.id }}#aa">edit</a></td>
+       <td align="center"><a href="/onlinebkdelete/{{ i.id }}">delete</a></td>
+     </tr>
+   {% endfor %}
+   </table>
+</form>
+</body>
+</html>
+{% endblock %}
+

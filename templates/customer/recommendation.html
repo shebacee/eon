@@ -1,0 +1,52 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Detected emotion : {{ em }}</h2>
+<table border="1">
+    <tr>
+        <th scope="col">SI </th>
+      <th scope="col">BOOK </th>
+      <th  scope="col">AUTHOR</th>
+      <th  scope="col">GENRE</th>
+        <th width="102" scope="col">TYPE</th>
+      <th width="158" scope="col">DESCRIPTION</th>
+      <th width="102" scope="col">IMAGE</th>
+      <th width="194" scope="col">FILE SIZE</th>
+      <th width="210" scope="col">LANGUAGE</th>
+      <th width="210" scope="col">NUMBER OF PAGES</th>
+
+      <th width="210" scope="col">READ </th>
+        <th width="138" scope="col">REVIEW</th>
+        <th width="138" scope="col">VIEW REVIEW</th>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td >{{ forloop.counter }}</td>
+        <td >{{ i.book_name }}</td>
+      <td >{{ i.author }}</td>
+      <td >{{ i.GENRE.categoryname }}</td>
+        <td >{{ i.type }}</td>
+      <td >&nbsp;{{ i.description }}</td>
+      <td >&nbsp;<img src="{{ i.image }}" width="100" height="100" alt=""/></td>
+      <td >{{ i.filesize }}</td>
+      <td >{{ i.language }}</td>
+      <td >{{ i.no_ofpage }}</td>
+
+      <td><a href="/turn_pages/{{ i.id }}">Read</a></td>
+      <td><a href="/add_onlinebk_review/{{ i.id }}#aa">Add reviews</a></td>
+      <td><a href="/view_all_onlinebk_review/{{ i.id }}#aa">view reviews n rating</a></td>
+
+    </tr>
+      {% endfor %}
+  </table>
+</body>
+</html>
+{% endblock %}

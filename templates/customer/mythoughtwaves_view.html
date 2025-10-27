@@ -1,0 +1,133 @@
+{% extends "customer/mythoughtwave_frontview.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+        /* Table Container */
+        .table-container {
+            width: 90\%;
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 15px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Stylish Grey Header */
+        th {
+            background-color: #444; /* Dark Grey */
+            color: white !important; /* Ensuring white text */
+            padding: 12px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Grey Button for Unblock */
+        .btn-unblock {
+            background-color: #666; /* Medium Grey */
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-unblock:hover {
+            background-color: #444; /* Darker Grey */
+        }
+
+    </style>
+</head>
+
+<body>
+<p>&nbsp;</p>
+
+<form id="form1" name="form1" method="post" action="" enctype="multipart/form-data">
+<div align="right">
+    <br>
+    <div class="row">
+        <div class="col-lg-6">
+            <b>Choose Font style</b>
+        </div>
+        <div class="col-lg-6">
+            <select id="select1" name="select">
+                <option>Select</option>
+                <option>Times New Roman</option>
+                <option>Arial</option>
+                <option>Courier New</option>
+                <option>Cursive</option>
+            </select>
+        </div>
+    </div>
+
+    <br><br><br><br>
+</div>
+<center>
+  <table width="200" >
+            {% for i in data %}
+  <tr>
+      <td class="td2" colspan="2" scope="row"><p><font color="black" size="7"> <b><u>CONTENT:</u></b></font></p><br><p><font color="#2f4f4f" size="4"> {{ i.content }}</font></p><br><br></td>
+    </tr>
+  <tr>
+      <td>{{ i.like }} likes <font color="#f5f5f5">...............</font> <a href="/add_comment/{{ i.id }}#aa" style="color: rebeccapurple;">comment</a></td>
+    <td><p> <a href="/edit_mythoughtwaves/{{ i.id }}#aa" style="color: rebeccapurple;">Edit</a>
+        <font color="#f5f5f5">...............</font> <a href="/delete_mythoughtwaves/{{ i.id }}" style="color: red;">Delete</a></p></td>
+
+  </tr>
+      {% endfor %}
+</table>
+</center>
+</form>
+<br>
+<br><br>
+<script src="/static/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+  $("#select1").change(function(){
+      var val=$("#select1").val();
+      if(val == "Select"){
+        alert("Select font style");
+      }
+      else {
+{#          $('.td1').css("font-family", val);#}
+          $('.td2').css("font-family", val);
+      }
+  });
+});
+</script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends "customer/index.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edit Review</title>
+<style>
+    /* Centered Card Container */
+    .review-card {
+        width: 300px;
+        background: #f8f8f8;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        margin: 10% auto;
+        text-align: center;
+    }
+
+    /* Sidebar Labels */
+    .review-label {
+        background: #888;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        display: inline-block;
+        width: 30%;
+        text-align: left;
+        border-radius: 5px 0 0 5px;
+    }
+
+    /* Input Fields */
+    .review-input {
+        width: 65%;
+        padding: 10px;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    /* Rating Section */
+    .stars {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+    }
+
+    .star {
+        font-size: 24px;
+        cursor: pointer;
+        color: #ccc;
+    }
+
+    .star.selected {
+        color: gold;
+    }
+
+    /* Button Styling */
+    .send-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #c0b1b8;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+    }
+
+    .send-btn:hover {
+        background-color: #a3919a;
+    }
+
+</style>
+<script>
+    function setRating(rating) {
+        document.getElementById("rating-input").value = rating;
+        let stars = document.querySelectorAll(".star");
+        stars.forEach((star, index) => {
+            star.classList.toggle("selected", index < rating);
+        });
+    }
+</script>
+</head>
+
+<body>
+    <form id="form1" name="form1" method="post" action="/edit_onlinebk_review_post/{{ view.id }}">
+        {% csrf_token %}
+        <div class="review-card">
+            <div>
+                <span class="review-label">REVIEW</span>
+                <input type="text" name="textfield3" value="{{ view.revw }}" id="textfield3" class="review-input" />
+            </div>
+
+            <div>
+                <span class="review-label">RATING</span>
+                <input type="hidden" name="textfield5" value="{{ view.rating }}" id="rating-input" />
+                <div class="stars">
+                    <span class="star" onclick="setRating(1)">★</span>
+                    <span class="star" onclick="setRating(2)">★</span>
+                    <span class="star" onclick="setRating(3)">★</span>
+                    <span class="star" onclick="setRating(4)">★</span>
+                    <span class="star" onclick="setRating(5)">★</span>
+                </div>
+            </div>
+
+            <button type="submit" class="send-btn">UPDATE</button>
+        </div>
+    </form>
+
+    <script>
+        // Pre-fill rating stars based on existing rating
+        document.addEventListener("DOMContentLoaded", function () {
+            setRating({{ view.rating|default:0 }});
+        });
+    </script>
+
+</body>
+</html>
+{% endblock %}

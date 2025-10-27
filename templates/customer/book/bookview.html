@@ -1,0 +1,143 @@
+{% extends "customer/bkview_interface.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+  /* Make hyperlinks white */
+  a {
+    color: grey;
+    text-decoration: none; /* Optional: remove underline */
+  }
+
+  /* Add hover effect for better visibility */
+  a:hover {
+    color: #ccc; /* Light gray on hover */
+    text-decoration: underline; /* Optional: underline on hover */
+  }
+</style>
+</head>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="" class="table table-hover">
+<center>
+  <table width="505" border="1" align="center" >
+  {% for i in data %}
+    <tr>
+      <th scope="row">IMAGE</th>
+      <td><img src="{{ i.image }}" width="100" height="100" alt=""/></td>
+    </tr>
+    <tr>
+      <th scope="row">BOOK</th>
+      <td>{{ i.book_name }}</td>
+    </tr>
+    <tr>
+      <th scope="row">AUTHOR</th>
+      <td>{{ i.author }}</td>
+    </tr>
+    <tr>
+      <th scope="row">GENRE</th>
+      <td>{{ i.GENRE.categoryname }}</td>
+    </tr>
+    <tr>
+      <th scope="row">TYPE</th>
+      <td>{{ i.type }}</td>
+    </tr>
+    <tr>
+      <th scope="row">DESCRIPTION</th>
+      <td>{{ i.description }}</td>
+    </tr>
+    <tr>
+      <th scope="row">NO. OF PAGES</th>
+      <td>{{ i.numberofpages }}</td>
+    </tr>
+    <tr>
+      <th scope="row">VIEW REVIEW</th>
+        <td><a href="/view_review_bout_mybk#aa" class="btn btn-outline-dark">view reviews n rating</a></td>    </tr>
+      <tr>
+          <th scope="row">EDIT</th>
+          <td><a href="/csbookedit/{{ i.id }}">edit</a></td>
+      </tr>
+      <tr>
+          <th scope="row">DELETE</th>
+          <td><a href="/csbkdelete/{{ i.id }}" onclick="return confirm('Are You Certain ?')" class="btn btn-outline-danger" >delete</a></td>
+      </tr>
+
+    {% endfor %}
+  </table>
+</center>
+</form>
+
+
+</body>
+</html>
+{% endblock %}
+
+
+{#{% extends "customer/index.html" %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="2228" border="1">#}
+{#    <tr>#}
+{#        <th width="74" scope="col">SI </th>#}
+{#      <th width="74" scope="col">BOOK </th>#}
+{#      <th width="102" scope="col">AUTHOR</th>#}
+{#      <th width="118" scope="col">PUBLISHER</th>#}
+{#      <th width="102" scope="col">GENRE</th>#}
+{#      <th width="158" scope="col">DESCRIPTION</th>#}
+{#      <th width="98" scope="col">PRICE</th>#}
+{#      <th width="134" scope="col">DISCOUNT</th>#}
+{#      <th width="98" scope="col">LOGIN</th>#}
+{#      <th width="102" scope="col">IMAGE</th>#}
+{#      <th width="194" scope="col">BOOK FORMAT</th>#}
+{#      <th width="134" scope="col">FILE URLS</th>#}
+{#      <th width="210" scope="col">BOOK CONDITION</th>#}
+{#      <th width="82" scope="col">TYPE</th>#}
+{#      <th width="174" scope="col">AVAILABILITY</th>#}
+{#      <th width="210" scope="col">NUMBER OF PAGES</th>#}
+{#      <th width="138" scope="col">&nbsp;EDIT</th>#}
+{#      <th width="138" scope="col">DELETE</th>#}
+{#        <th width="138" scope="col">REVIEW</th>#}
+{##}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td >{{ forloop.counter }}</td>#}
+{#        <td >{{ i.book_name }}</td>#}
+{#      <td >{{ i.author }}</td>#}
+{#      <td >{{ i.publisher }}</td>#}
+{#      <td >{{ i.GENRE.categoryname }}</td>#}
+{#      <td >&nbsp;{{ i.description }}</td>#}
+{#      <td >&nbsp;{{ i.price }}</td>#}
+{#      <td >&nbsp;{{ i.discount }}</td>#}
+{#      <td >&nbsp;<img src="{{ i.image }}" width="100" height="100" alt=""/></td>#}
+{#      <td >&nbsp;{{ i.book_format }}</td>#}
+{#      <td >&nbsp;{{ i.fileurls }}</td>#}
+{#      <td >{{ i.bookcondition }}</td>#}
+{#      <td >&nbsp;{{ i.availability }}</td>#}
+{#      <td >{{ i.numberofpages }}</td>#}
+{#      <td><a href="/csbookedit/{{ i.id }}#aa">edit</a></td>#}
+{#      <td><a href="/csbkdelete/{{ i.id }}">delete</a></td>#}
+{#      <td><a href="/view_review_bout_mybk#aa">view reviews n rating</a></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}

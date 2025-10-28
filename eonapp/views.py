@@ -622,8 +622,16 @@ def reg_cust_post(request):
     image = request.FILES['fileField']
     fs = FileSystemStorage()
     d = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    fs.save(r"/home/sbcvmbox/Desktop/eon_final/eon/eonapp/static/image/" + d + ".jpg", image)
-    path = "/static/image/" + d + ".jpg"
+
+
+
+    filename = f"image/{d}.jpg"
+    fs.save(filename, image)
+    path = f"/static/image/{d}.jpg"
+    # fs.save(r"/home/sbcvmbox/Desktop/eon_final/eon/eonapp/static/image/" + d + ".jpg", image)
+    # path = "/static/image/" + d + ".jpg"
+
+
     first_name=request.POST['textfield']
     last_name = request.POST['textfield9']
     email=request.POST['textfield2']
@@ -1608,6 +1616,7 @@ def chatrply(request):
             data.append({'id':i.id, 'message':i.chat, 'date':i.date, 'type':i.type})
         print(data)
         return JsonResponse({'status':"ok", "data":data})
+
 
 def turn_pages(request,c):
     c= online_book.objects.get(id=c).content

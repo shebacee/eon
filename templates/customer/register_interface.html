@@ -10,13 +10,15 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Form</title>
+    <title>Customer Registration</title>
 
     <!-- Icons font CSS-->
-    <link href="/static/reg_assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/static/reg_assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet"
+        media="all">
     <link href="/static/reg_assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+        rel="stylesheet">
 
     <!-- Vendor CSS-->
     <link href="/static/reg_assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
@@ -24,65 +26,383 @@
 
     <!-- Main CSS-->
     <link href="/static/reg_assets/css/main.css" rel="stylesheet" media="all">
-</head>
-<body>
-<style>
-    .page-wrapper {
-        background: whitesmoke; /* Neutral light gray */
-    }
-</style>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .page-wrapper {
+            background: transparent !important;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .wrapper {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: none;
+        }
+
+        .card-heading {
+            background: transparent;
+            padding: 40px 40px 20px;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .card-heading .title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .card-heading .subtitle {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-top: 8px;
+            font-weight: 400;
+        }
+
+        .card-body {
+            padding: 20px 40px 40px;
+        }
+
+        /* Form Layout */
+        .form-row {
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row.m-b-55 {
+            margin-bottom: 24px;
+        }
+
+        .form-row .name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-row .value {
+            width: 100%;
+        }
+
+        /* Two Column Layout */
+        .row-space {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .col-2 {
+            width: 100%;
+        }
+
+        /* Input Styles */
+        .input-group {
+            position: relative;
+        }
+
+        .input--style-5 {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: #2d3748;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            outline: none;
+        }
+
+        .input--style-5:focus {
+            border-color: #4c6ef5;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.1);
+        }
+
+        .input--style-5::placeholder {
+            color: #a0aec0;
+        }
+
+        .input-group-desc {
+            position: relative;
+        }
+
+        .label--desc {
+            font-size: 0.75rem;
+            color: #718096;
+            margin-top: 4px;
+            display: block;
+            text-transform: capitalize;
+        }
+
+        /* File Input */
+        input[type="file"] {
+            padding: 10px 16px;
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-right: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Radio Buttons */
+        .form-row.p-t-20 {
+            padding-top: 0;
+        }
+
+        .label--block {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .p-t-15 {
+            padding-top: 0;
+            display: flex;
+            gap: 24px;
+        }
+
+        .radio-container {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding-left: 32px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #2d3748;
+            user-select: none;
+            margin: 0;
+        }
+
+        .radio-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            position: absolute;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #e2e8f0;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .radio-container:hover input~.checkmark {
+            background-color: #cbd5e0;
+        }
+
+        .radio-container input:checked~.checkmark {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .radio-container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        .radio-container .checkmark:after {
+            top: 6px;
+            left: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .m-r-55 {
+            margin-right: 0;
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #4c6ef5 0%, #5b7cff 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 16px;
+            box-shadow: 0 4px 15px rgba(76, 110, 245, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 110, 245, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn--radius-2,
+        .btn--red {
+            /* Override original styles */
+            background: linear-gradient(135deg, #4c6ef5 0%, #5b7cff 100%) !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card-heading {
+                padding: 30px 24px 16px;
+            }
+
+            .card-heading .title {
+                font-size: 1.5rem;
+            }
+
+            .card-body {
+                padding: 16px 24px 32px;
+            }
+
+            .row-space {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .p-t-15 {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        /* Remove default margins from original CSS */
+        .p-t-45,
+        .p-b-50 {
+            padding: 0 !important;
+        }
+
+        .bg-gra-03 {
+            background: transparent !important;
+        }
+
+        .wrapper--w790 {
+            max-width: 100% !important;
+        }
+
+        .card-5 {
+            border: none !important;
+        }
+    </style>
+</head>
+
+<body>
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">CUSTOMER REGISTRATION FORM</h2>
+                    <h2 class="title">Customer Registration</h2>
+                    <p class="subtitle">Join our platform and start your journey today</p>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/reg_cust_post"  enctype="multipart/form-data">
+                    <form method="POST" action="/reg_cust_post" enctype="multipart/form-data">
+
                         <div class="form-row">
-                            <div class="name">Image</div>
+                            <div class="name">Profile Image</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="file" name="fileField" required>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row m-b-55">
-                            <div class="name">Name</div>
+                            <div class="name">Full Name</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="textfield" required pattern="[A-Za-z\s]{1,}">
+                                            <input class="input--style-5" type="text" name="textfield"
+                                                placeholder="Enter first name" required pattern="[A-Za-z\s]{1,}">
                                             <label class="label--desc">first name</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="textfield9" required pattern="[A-Za-z\s]{1,}">
+                                            <input class="input--style-5" type="text" name="textfield9"
+                                                placeholder="Enter last name" required pattern="[A-Za-z\s]{1,}">
                                             <label class="label--desc">last name</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="name">Username</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="textfield2" required>
+                                    <input class="input--style-5" type="text" name="textfield2"
+                                        placeholder="Choose a username" required>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row">
-                            <div class="name">Phone no</div>
+                            <div class="name">Phone Number</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="textfield3" required pattern="\d{10}">
+                                    <input class="input--style-5" type="text" name="textfield3"
+                                        placeholder="10-digit phone number" required pattern="\d{10}">
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="name">Date of Birth</div>
                             <div class="value">
@@ -91,14 +411,17 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="name">Age</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="textfield6" required pattern="\d+">
+                                    <input class="input--style-5" type="text" name="textfield6"
+                                        placeholder="Enter your age" required pattern="\d+">
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row p-t-20">
                             <label class="label label--block">Gender</label>
                             <div class="p-t-15">
@@ -112,48 +435,59 @@
                                 </label>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="name">Place</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="textfield7" required >
+                                    <input class="input--style-5" type="text" name="textfield7"
+                                        placeholder="Your city/town" required>
                                 </div>
                             </div>
                         </div>
-                         <div class="form-row">
-                            <div class="name">Post</div>
+
+                        <div class="form-row">
+                            <div class="name">Post Office</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="textfield10" required>
+                                    <input class="input--style-5" type="text" name="textfield10"
+                                        placeholder="Post office name" required>
                                 </div>
                             </div>
                         </div>
-                          <div class="form-row">
+
+                        <div class="form-row">
                             <div class="name">Pincode</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="textfield11" required>
+                                    <input class="input--style-5" type="text" name="textfield11"
+                                        placeholder="6-digit pincode" required>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="name">Password</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="textfield8" required>
+                                    <input class="input--style-5" type="password" name="textfield8"
+                                        placeholder="Create a password" required>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="name">Confirm Password</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="textfield5" required>
+                                    <input class="input--style-5" type="password" name="textfield5"
+                                        placeholder="Confirm your password" required>
                                 </div>
                             </div>
                         </div>
+
                         <div align="center">
-                            <button class="btn btn--radius-2 btn--red" type="submit">REGISTER</button>
+                            <button class="btn btn--radius-2 btn--red" type="submit">Register</button>
                         </div>
                     </form>
                 </div>
@@ -171,7 +505,6 @@
     <!-- Main JS-->
     <script src="/static/reg_assets/js/global.js"></script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
-<!-- end document-->
